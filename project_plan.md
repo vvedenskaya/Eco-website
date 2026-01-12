@@ -42,13 +42,14 @@ The simplest MVP focus is to get users through the onboarding flow (Pages 0-3) a
     *   **Page 3 (Legal Notice):** Implement the signature field/acceptance button.
     *   **Storage:** Secure saving of profile data to cloud DB.
 
-### Sprint 3: The Hub & Helpdesk (Page 5)
+### Sprint 3: The Hub & Helpdesk (Page 5) - COMPLETE
 *Focus: Creating the "Home" experience.*
 *   **Subproject:** Project Portal / Content Engine
 *   **Tasks:**
     *   **Page 5 (Info/Helpdesk):** Implement the split-pane layout (Topics on left, content on right).
-    *   **Calendar Component:** Basic integration with accessible calendars.
-    *   **Navigation:** Link logo to return to this "Home" page.
+    *   **Calendar Component:** Basic integration with accessible calendars (Simulated for MVP).
+    *   **Navigation:** Link logo and profile icon for easy access.
+    *   **Cozy Aesthetic:** Integrated "book edge" borders and "lamp glow" gradients.
 
 ### Sprint 4: Career Roadmap & Pillars (Page 4)
 *Focus: Visualizing the transition into environmental work.*

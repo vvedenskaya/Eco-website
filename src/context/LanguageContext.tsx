@@ -12,28 +12,28 @@ interface LanguageContextType {
 
 const translations = {
   en: {
-    'mission.phrase': 'Stewardship for a Sustainable Future',
-    'mission.body': 'Empowering communities to transition into environmental careers through education and roadmapping.',
+    'mission.phrase': 'Numen Aquae',
+    'mission.body': "A possibility to bridge economic opportunity and environmental resilience by building Environmental literacy and bilingual content creation pathways through AI for historically disinvested communities in Imperial County's Southern Border Region.",
     'enter.site': 'Enter Site',
-    'welcome': 'Welcome',
-    'onboard.en': 'Enter here to learn in English',
+    'welcome.en': 'Welcome to stewardworks.space',
+    'onboard.en': 'enter here to learn in English',
     'onboard.button.en': 'Onboard',
-    'welcome.es': 'Bienvenida',
+    'welcome.es': 'Bienvenida a stewardworks.space',
     'onboard.es': 'Entra aquí para aprender en Español',
     'onboard.button.es': 'A bordo',
-    'credits': 'Supported by Nureaum and StewardWorks Grant Sponsors',
+    'credits': 'Supported by our fiscal contributors',
   },
   es: {
-    'mission.phrase': 'Administración para un Futuro Sostenible',
-    'mission.body': 'Empoderando a las comunidades para la transición a carreras ambientales a través de la educación y la planificación.',
+    'mission.phrase': 'Numen Aquae',
+    'mission.body': "Una posibilidad de cerrar la brecha entre la oportunidad económica y la resiliencia ambiental mediante la alfabetización ambiental y vías de creación de contenido bilingüe a través de la IA para comunidades históricamente desatendidas en la región de la frontera sur del Condado Imperial.",
     'enter.site': 'Entrar al sitio',
-    'welcome': 'Bienvenida',
-    'onboard.en': 'Enter here to learn in English',
+    'welcome.en': 'Welcome to stewardworks.space',
+    'onboard.en': 'enter here to learn in English',
     'onboard.button.en': 'Onboard',
-    'welcome.es': 'Bienvenida',
+    'welcome.es': 'Bienvenida a stewardworks.space',
     'onboard.es': 'Entra aquí para aprender en Español',
     'onboard.button.es': 'A bordo',
-    'credits': 'Con el apoyo de los patrocinadores de la subvención Nureaum y StewardWorks',
+    'credits': 'Con el apoyo de nuestros contribuyentes fiscales',
   }
 };
 

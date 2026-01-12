@@ -13,56 +13,56 @@ export default function LanguageOnboarding() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4 md:p-8 bg-eden-beige">
-      <div className="w-full max-w-5xl flex flex-col md:flex-row items-center justify-center space-y-12 md:space-y-0 relative">
+    <main className="min-h-screen flex items-center justify-center p-4 md:p-8 bg-transparent relative z-10">
+      <div className="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center space-y-16 md:space-y-0 relative">
         
         {/* English Section (Left) */}
-        <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-lofi uppercase tracking-tight text-eden-green">
-              {t('welcome')}
-            </h2>
-            <p className="text-sm font-lofi uppercase tracking-widest text-eden-earth">
+        <div className="flex-1 flex flex-col items-center justify-center text-center space-y-8 animate-in fade-in slide-in-from-left-10 duration-1000">
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-5xl font-sans font-black text-eden-green tracking-tight leading-none">
+              {t('welcome.en')}
+            </h1>
+            <p className="text-sm md:text-base font-sans font-medium text-eden-earth opacity-70 lowercase">
               {t('onboard.en')}
             </p>
           </div>
           <button 
             onClick={() => handleLanguageSelect('en')}
-            className="lofi-button px-10 py-3"
+            className="w-48 py-3 bg-[#4D8AC9] hover:bg-[#3D7AB9] text-white font-bold rounded-lg shadow-md transition-all duration-300 hover:scale-105 active:scale-95"
           >
             {t('onboard.button.en')}
           </button>
         </div>
 
-        {/* Divider Section (Center) */}
-        <div className="hidden md:flex h-64 items-center">
-          <div className="lofi-vertical-line" />
+        {/* Vertical Divider Section (Center) */}
+        <div className="hidden md:flex h-80 items-center px-12">
+          <div className="w-[1px] h-full bg-eden-green/20" />
         </div>
-        <div className="md:hidden w-full px-12">
-          <div className="lofi-line" />
+        <div className="md:hidden w-full px-12 opacity-20">
+          <div className="h-[1px] w-full bg-eden-green" />
         </div>
 
         {/* Spanish Section (Right) */}
-        <div className="flex-1 flex flex-col items-center md:items-end text-center md:text-right space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-lofi uppercase tracking-tight text-eden-green">
+        <div className="flex-1 flex flex-col items-center justify-center text-center space-y-8 animate-in fade-in slide-in-from-right-10 duration-1000">
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-5xl font-sans font-black text-eden-green tracking-tight leading-none">
               {t('welcome.es')}
-            </h2>
-            <p className="text-sm font-lofi uppercase tracking-widest text-eden-earth">
+            </h1>
+            <p className="text-sm md:text-base font-sans font-medium text-eden-earth opacity-70">
               {t('onboard.es')}
             </p>
           </div>
           <button 
             onClick={() => handleLanguageSelect('es')}
-            className="lofi-button px-10 py-3"
+            className="w-48 py-3 bg-[#4D8AC9] hover:bg-[#3D7AB9] text-white font-bold rounded-lg shadow-md transition-all duration-300 hover:scale-105 active:scale-95"
           >
             {t('onboard.button.es')}
           </button>
         </div>
 
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 text-[10px] font-lofi opacity-20 hidden md:block">
-          STEP_01 / LANGUAGE_SELECTION
+        {/* Subtle Background Typography */}
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 text-[15vw] font-black opacity-[0.02] select-none uppercase tracking-tighter whitespace-nowrap pointer-events-none">
+          Select Language
         </div>
       </div>
     </main>

@@ -17,6 +17,61 @@ body {
   font-family: 'Courier New', Courier, monospace;
 }
 
+/* Cozy Book Aesthetic - Simplified */
+.book-container {
+  @apply relative min-h-screen overflow-x-hidden;
+  background: #FDFBF7;
+}
+
+.paper-texture {
+  background-image: radial-gradient(rgba(45, 75, 62, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Immersive Cozy Scene - High Visuals */
+.book-container {
+  @apply relative min-h-screen overflow-x-hidden bg-[#121212];
+}
+
+/* Base atmosphere - Warm vs Cold light */
+.scene-lighting {
+  @apply fixed inset-0 z-0 pointer-events-none;
+  background: 
+    radial-gradient(circle at 90% 10%, rgba(255, 180, 50, 0.15) 0%, transparent 40%), /* Lamp glow */
+    radial-gradient(circle at 10% 20%, rgba(100, 150, 255, 0.08) 0%, transparent 50%), /* Window glow */
+    #FDFBF7;
+}
+
+.cozy-object {
+  @apply fixed z-0 pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)];
+}
+
+.main-lamp {
+  @apply top-[-5%] right-[-5%] w-[400px] h-[400px] rotate-[-15deg] opacity-80 brightness-90;
+}
+
+.main-books {
+  @apply bottom-[-5%] left-[-5%] w-[350px] h-[350px] rotate-[10deg] opacity-90 brightness-95;
+}
+
+.main-decor {
+  @apply top-[15%] left-[-2%] w-[250px] h-[250px] rotate-[-5deg] opacity-40 grayscale-[0.3];
+}
+
+.desk-vibe {
+  @apply fixed bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/20 to-transparent z-0;
+}
+
+.book-edge-left {
+  @apply absolute left-0 top-0 h-full w-8 md:w-12 opacity-30 pointer-events-none border-r border-eden-green;
+  background: repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(45, 75, 62, 0.2) 3px, transparent 4px);
+}
+
+.book-edge-right {
+  @apply absolute right-0 top-0 h-full w-8 md:w-12 opacity-30 pointer-events-none border-l border-eden-green;
+  background: repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(45, 75, 62, 0.2) 3px, transparent 4px);
+}
+
 /* Lofi UI Elements */
 .lofi-border {
   border: 1.5px solid currentColor;

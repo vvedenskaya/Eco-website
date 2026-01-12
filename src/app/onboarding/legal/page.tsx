@@ -3,95 +3,150 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
-import { Save, Check } from 'lucide-react';
+import { Save } from 'lucide-react';
+import Image from 'next/image';
 
 export default function LegalNotice() {
   const { t } = useLanguage();
   const router = useRouter();
   const [accepted, setAccepted] = useState(false);
+  const [signature, setSignature] = useState('');
 
   const handleSaveProgress = () => {
     alert('Progress saved to your email!');
   };
 
   return (
-    <main className="min-h-screen bg-eden-beige p-4 md:p-8 flex flex-col">
-      {/* Header */}
-      <header className="flex justify-between items-center mb-12">
-        <div className="w-12 h-12 lofi-border flex items-center justify-center font-lofi font-bold text-eden-green cursor-pointer" onClick={() => router.push('/')}>
-          LH
+    <main className="min-h-screen bg-white/30 backdrop-blur-[2px] flex flex-col relative z-10 font-sans">
+      {/* Header - Matching Page 2 Dark Theme */}
+      <header className="bg-[#2D3748] px-4 md:px-8 py-3 flex justify-between items-center sticky top-0 z-50 shadow-md">
+        {/* 1. Logo (SW blue circle, link to pg 5) */}
+        <div 
+          className="w-10 h-10 bg-[#4D8AC9] rounded-full flex items-center justify-center font-black text-white text-sm cursor-pointer hover:scale-105 transition-transform" 
+          onClick={() => router.push('/hub')}
+        >
+          SW
         </div>
-        <h1 className="text-sm font-lofi uppercase tracking-widest text-eden-earth">
+        
+        {/* 2. Title Text (Legal Notice, center top) */}
+        <h1 className="text-lg md:text-xl font-bold text-white tracking-tight">
           Legal Notice
         </h1>
+        
+        {/* 3. Button (Save Progress, top right) */}
         <button 
           onClick={handleSaveProgress}
-          className="lofi-button flex items-center gap-2 text-[10px]"
+          className="bg-[#48BB78] hover:bg-[#38A169] text-white px-4 py-1.5 rounded-md text-sm font-bold shadow-sm transition-all active:scale-95"
         >
-          <Save size={14} />
           Save Progress
         </button>
       </header>
 
       {/* Body */}
-      <div className="max-w-3xl mx-auto w-full flex-1 flex flex-col space-y-8 pb-24">
+      <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col space-y-8 py-10 px-6 pb-32">
         
-        {/* Legal Text Area */}
-        <div className="bg-white/50 lofi-border p-6 md:p-10 h-64 overflow-y-auto font-lofi text-sm leading-relaxed text-eden-green">
-          <p className="mb-4 font-bold uppercase">Terms and Conditions of Use</p>
-          <p className="mb-4">
-            By using the Lit Hub platform, you agree to participate in our environmental career roadmap program. 
-            All data collected during the onboarding process is used solely for the purpose of helping you identify 
-            and track your educational and career goals.
-          </p>
-          <p className="mb-4">
-            We value your privacy and data security. Your information will not be shared with third parties 
-            without your explicit consent, except as required to fulfill the program objectives (e.g., connecting 
-            you with mentors or job opportunities).
-          </p>
-          <p className="mb-4">
-            The resources provided on this site are for educational purposes. StewardWorks and Nureaum are not 
-            responsible for any third-party content or external links provided within the roadmap.
-          </p>
-          <p>
-            [Insert full legal terms here as provided by StewardWorks]
-          </p>
+        {/* 1. Text Content Area - Based on Terms of Use & Digital Creator Rights.jpg */}
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-8 md:p-12 shadow-sm font-sans text-[#2D3748] overflow-y-auto max-h-[60vh]">
+          <h2 className="text-2xl font-bold mb-2">Terms of Use & Digital Creator Rights</h2>
+          <p className="text-sm text-[#718096] mb-8 font-medium text-left">Effective Date: January 8, 2026</p>
+          
+          <div className="space-y-8 text-left">
+            <section>
+              <h3 className="text-lg font-bold text-[#4D8AC9] mb-3">1. Your Rights as a Digital Creator</h3>
+              <p className="text-sm leading-relaxed mb-3">
+                As a participant in the AI Content Creation & Environmental Literacy Hub, you retain ALL intellectual property rights to content you create. This includes:
+              </p>
+              <ul className="list-disc pl-5 text-sm space-y-1 opacity-90 font-medium">
+                <li>Written content, stories, and narratives you produce</li>
+                <li>Visual content, images, and digital media you generate</li>
+                <li>Bilingual translations and adaptations of your work</li>
+                <li>Environmental storytelling projects and portfolios</li>
+              </ul>
+            </section>
+
+            <section>
+              <h3 className="text-lg font-bold text-[#4D8AC9] mb-3">2. California Creator Protections</h3>
+              <p className="text-sm leading-relaxed mb-3">
+                Under California law, including provisions aligned with the California Consumer Privacy Act (CCPA) and Digital Creator Rights, you have the right to:
+              </p>
+              <ul className="list-disc pl-5 text-sm space-y-1 opacity-90 font-medium">
+                <li>Own and control your creative work without assignment to this platform</li>
+                <li>Decide how your work is used, shared, or displayed publicly</li>
+                <li>Withdraw permission for use of your work at any time</li>
+                <li>Be credited as the creator when your work is showcased</li>
+              </ul>
+            </section>
+
+            <section>
+              <h3 className="text-lg font-bold text-[#4D8AC9] mb-3">3. Platform Use of Student Work</h3>
+              <p className="text-sm leading-relaxed mb-3">
+                Stewardworks.space may request permission to showcase exemplary student work for educational and promotional purposes. We will:
+              </p>
+              <ul className="list-disc pl-5 text-sm space-y-1 opacity-90 font-medium">
+                <li>Always request your explicit written consent before sharing your work</li>
+                <li>Provide full attribution crediting you as the creator</li>
+                <li>Allow you to revoke permission at any time</li>
+                <li>Never sell or monetize your work without a separate written agreement</li>
+              </ul>
+            </section>
+
+            <section>
+              <h3 className="text-lg font-bold text-[#4D8AC9] mb-3">4. Data Privacy & Educational Use</h3>
+              <p className="text-sm leading-relaxed mb-3">
+                Your personal information and educational data will be:
+              </p>
+              <ul className="list-disc pl-5 text-sm space-y-1 opacity-90 font-medium">
+                <li>Stored securely and used only for educational purposes</li>
+                <li>Protected under privacy policies compliant with California law</li>
+                <li>Shared with educational partners only in aggregate, de-identified form</li>
+                <li>Available to you upon request, with options to correct or delete</li>
+              </ul>
+            </section>
+          </div>
         </div>
 
-        {/* Action Area */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-4">
-          {/* Signature/Accept Button */}
-          <div className="flex flex-col items-center md:items-start space-y-2">
-            <button 
-              onClick={() => setAccepted(!accepted)}
-              className={`flex items-center gap-3 px-6 py-4 lofi-border transition-all duration-200 ${accepted ? 'bg-eden-green text-eden-beige' : 'bg-white hover:bg-eden-beige'}`}
-            >
-              <div className={`w-5 h-5 lofi-border flex items-center justify-center ${accepted ? 'bg-eden-beige text-eden-green' : 'bg-white'}`}>
-                {accepted && <Check size={16} />}
+        {/* Action Area - Bottom Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end pt-4">
+          {/* 1. Signature Field (Bottom Left) */}
+          <div className="space-y-4">
+            <div className="bg-white border-2 border-[#E2E8F0] rounded-xl p-6 shadow-sm">
+              <label className="block text-sm font-bold text-[#1A202C] mb-6">
+                I acknowledge that I have read and understand my rights
+              </label>
+              <div className="flex flex-col space-y-2">
+                <span className="text-[10px] text-[#718096] uppercase font-bold tracking-wider">Signature / Name:</span>
+                <input 
+                  type="text" 
+                  value={signature}
+                  onChange={(e) => setSignature(e.target.value)}
+                  className="w-full bg-transparent border-b-2 border-dashed border-[#4D8AC9] py-2 focus:outline-none font-medium text-[#2D3748]"
+                  placeholder="Type your name here..."
+                />
               </div>
-              <span className="font-lofi uppercase tracking-wider text-sm">
-                Accept Terms & Sign
-              </span>
-            </button>
-            <p className="text-[9px] font-lofi uppercase text-eden-earth italic px-1">
-              * By clicking, you agree to the terms listed above
-            </p>
+            </div>
           </div>
 
-          {/* Continue Button */}
-          <button 
-            disabled={!accepted}
-            onClick={() => router.push('/hub')}
-            className={`lofi-button px-14 py-4 text-lg ${!accepted ? 'opacity-30 cursor-not-allowed' : 'opacity-100'}`}
-          >
-            Continue
-          </button>
+          {/* 2. Button (Continue, bottom right) */}
+          <div className="flex justify-end">
+            <button 
+              disabled={!signature.trim()}
+              onClick={() => router.push('/onboarding/objectives')}
+              className={`w-full md:w-auto px-12 py-4 rounded-xl shadow-lg transition-all duration-300 font-bold text-lg uppercase tracking-widest ${
+                signature.trim() 
+                ? 'bg-[#4D8AC9] hover:bg-[#3D7AB9] text-white hover:scale-[1.02] active:scale-95' 
+                : 'bg-[#E2E8F0] text-[#A0AEC0] cursor-not-allowed'
+              }`}
+            >
+              I Accept & Continue
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* LoFi visual accents */}
-      <div className="absolute top-1/2 left-4 w-1 h-24 bg-eden-green opacity-5 hidden lg:block" />
-      <div className="absolute top-1/2 right-4 w-1 h-24 bg-eden-green opacity-5 hidden lg:block" />
+        {/* Footer Support Text */}
+        <p className="text-center text-[10px] text-[#718096] font-medium pt-4 pb-10">
+          Questions about your rights? Contact: support@stewardworks.space
+        </p>
+      </div>
     </main>
   );
 }

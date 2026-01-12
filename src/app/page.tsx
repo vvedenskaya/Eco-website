@@ -1,64 +1,92 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function PreHome() {
   const { t } = useLanguage();
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8 md:p-24 relative overflow-hidden">
-      {/* Background/LoFi feel decorative elements */}
-      <div className="absolute top-10 left-10 opacity-20 hidden md:block">
-        <div className="w-32 h-32 lofi-border rounded-full flex items-center justify-center text-[10px] font-lofi uppercase tracking-widest">
-          StewardWorks
-        </div>
-      </div>
-
-      <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Logo Section (Center Left) */}
-        <div className="flex justify-center md:justify-start">
-          <div className="w-48 h-48 lofi-border flex items-center justify-center relative">
-            <span className="text-2xl font-lofi tracking-tighter uppercase font-bold text-eden-green">
-              Lit Hub
-            </span>
-            <div className="absolute -bottom-4 -right-4 bg-eden-beige px-2 text-[10px] font-lofi lofi-border">
-              stewardworks.space
+    <main className="min-h-screen flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden">
+      <div className="w-full max-w-6xl z-10 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        
+        {/* 1. Logo Section (Center Left) */}
+        <div className="md:col-span-5 flex justify-center md:justify-start">
+          <Link href="/hub" className="group">
+            <div className="relative w-72 h-72 md:w-96 md:h-96 transition-transform duration-700 group-hover:scale-[1.02]">
+              <Image 
+                src="/logo 1.jpg" 
+                alt="StewardWorks Logo" 
+                fill
+                style={{ objectFit: 'contain' }}
+                priority
+                className="drop-shadow-2xl"
+              />
+              {/* Subtle borderless URL label */}
+              <div className="absolute -bottom-8 left-0 text-[10px] font-lofi tracking-[0.5em] uppercase opacity-30 group-hover:opacity-60 transition-opacity whitespace-nowrap">
+                stewardworks.space
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Text Section (Center Right) */}
-        <div className="flex flex-col space-y-4">
-          <div>
-            <h1 className="text-xl md:text-2xl font-lofi font-bold uppercase tracking-wide text-eden-green">
+        <div className="md:col-span-7 flex flex-col space-y-8 text-eden-green">
+          {/* 2. Mission Phrase (Numen Aquae) - Top Right */}
+          <div className="space-y-2">
+            <h1 className="text-5xl md:text-7xl font-sans font-black uppercase tracking-tighter leading-none animate-in fade-in slide-in-from-right-10 duration-1000">
               {t('mission.phrase')}
             </h1>
-            <p className="mt-4 text-sm md:text-base leading-relaxed max-w-md">
+            <div className="h-[2px] w-24 bg-eden-green/20" />
+          </div>
+
+          {/* 3. Mission Statement - Center Right below phrase */}
+          <div className="max-w-xl animate-in fade-in slide-in-from-right-10 duration-1000 delay-300">
+            <p className="text-base md:text-lg font-sans leading-relaxed tracking-tight font-medium opacity-90">
               {t('mission.body')}
             </p>
           </div>
 
-          <div className="lofi-line" />
+          {/* 4. Horizontal Line element */}
+          <div className="w-full h-[1px] bg-eden-green/20" />
 
-          <div className="text-[11px] md:text-[13px] font-lofi uppercase tracking-wider text-eden-earth">
-            {t('credits')}
+          {/* 5. Credits - Center Right below line */}
+          <div className="flex flex-col space-y-4 animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-500">
+            <p className="text-[10px] font-lofi uppercase tracking-[0.3em] text-eden-earth">
+              {t('credits')}
+            </p>
+            <div className="relative w-64 h-20 grayscale opacity-40 hover:opacity-100 transition-all duration-500">
+              <Image 
+                src="/partner_logo_strip_current.jpg" 
+                alt="Partner Logos" 
+                fill
+                style={{ objectFit: 'contain', objectPosition: 'left' }}
+              />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Footer Section (Center Bottom) */}
-      <div className="mt-16 md:mt-24">
+      {/* 6. Button (Center Bottom) */}
+      <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20">
         <Link href="/onboarding/language">
-          <button className="lofi-button px-12 py-4 text-lg">
-            {t('enter.site')}
+          <button className="group relative overflow-hidden lofi-button px-20 py-5 text-xl font-bold tracking-[0.2em] transition-all duration-300 hover:bg-eden-green hover:text-eden-beige bg-white">
+            <span className="relative z-10">{t('enter.site')}</span>
+            <div className="absolute inset-0 bg-eden-green transform translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
           </button>
         </Link>
       </div>
 
-      {/* LoFi visual accents */}
-      <div className="absolute bottom-0 left-0 w-full h-2 bg-eden-green opacity-10" />
-      <div className="absolute bottom-4 left-0 w-full h-[1px] bg-eden-green opacity-5" />
+      {/* Post-modern background accents */}
+      <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[10%] right-[5%] text-[12vw] font-black opacity-[0.03] select-none uppercase tracking-tighter">
+          Steward
+        </div>
+        <div className="absolute bottom-[20%] left-[2%] text-[8vw] font-black opacity-[0.02] select-none uppercase tracking-tighter -rotate-90">
+          Resilience
+        </div>
+      </div>
     </main>
   );
 }
