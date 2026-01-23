@@ -19,16 +19,16 @@ export default function LanguageOnboarding() {
         {/* English Section (Left) */}
         <div className="flex-1 flex flex-col items-center justify-center text-center space-y-8 animate-in fade-in slide-in-from-left-10 duration-1000">
           <div className="space-y-4">
-            <h1 className="text-4xl md:text-5xl font-sans font-black text-eden-green tracking-tight leading-none">
+            <h1 className="text-4xl md:text-5xl font-exo font-black text-steward-green tracking-tight leading-none">
               {t('welcome.en')}
             </h1>
-            <p className="text-sm md:text-base font-sans font-medium text-eden-earth opacity-70 lowercase">
+            <p className="text-sm md:text-base font-exo font-medium text-steward-gold opacity-70 lowercase">
               {t('onboard.en')}
             </p>
           </div>
           <button 
             onClick={() => handleLanguageSelect('en')}
-            className="w-48 py-3 bg-[#4D8AC9] hover:bg-[#3D7AB9] text-white font-bold rounded-lg shadow-md transition-all duration-300 hover:scale-105 active:scale-95"
+            className="w-48 py-3 bg-steward-blue hover:bg-steward-orange text-white font-bold rounded-lg shadow-md transition-all duration-300 hover:scale-105 active:scale-95"
           >
             {t('onboard.button.en')}
           </button>
@@ -36,32 +36,32 @@ export default function LanguageOnboarding() {
 
         {/* Vertical Divider Section (Center) */}
         <div className="hidden md:flex h-80 items-center px-12">
-          <div className="w-[1px] h-full bg-eden-green/20" />
+          <div className="w-[1px] h-full bg-steward-gold/20" />
         </div>
         <div className="md:hidden w-full px-12 opacity-20">
-          <div className="h-[1px] w-full bg-eden-green" />
+          <div className="h-[1px] w-full bg-steward-gold" />
         </div>
 
         {/* Spanish Section (Right) */}
         <div className="flex-1 flex flex-col items-center justify-center text-center space-y-8 animate-in fade-in slide-in-from-right-10 duration-1000">
           <div className="space-y-4">
-            <h1 className="text-4xl md:text-5xl font-sans font-black text-eden-green tracking-tight leading-none">
+            <h1 className="text-4xl md:text-5xl font-exo font-black text-steward-green tracking-tight leading-none">
               {t('welcome.es')}
             </h1>
-            <p className="text-sm md:text-base font-sans font-medium text-eden-earth opacity-70">
+            <p className="text-sm md:text-base font-exo font-medium text-steward-gold opacity-70">
               {t('onboard.es')}
             </p>
           </div>
           <button 
             onClick={() => handleLanguageSelect('es')}
-            className="w-48 py-3 bg-[#4D8AC9] hover:bg-[#3D7AB9] text-white font-bold rounded-lg shadow-md transition-all duration-300 hover:scale-105 active:scale-95"
+            className="w-48 py-3 bg-steward-blue hover:bg-steward-orange text-white font-bold rounded-lg shadow-md transition-all duration-300 hover:scale-105 active:scale-95"
           >
             {t('onboard.button.es')}
           </button>
         </div>
 
         {/* Subtle Background Typography */}
-        <div className="absolute -top-24 left-1/2 -translate-x-1/2 text-[15vw] font-black opacity-[0.02] select-none uppercase tracking-tighter whitespace-nowrap pointer-events-none">
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 text-[15vw] font-exo font-black opacity-[0.02] select-none uppercase tracking-tighter whitespace-nowrap pointer-events-none text-steward-green">
           Select Language
         </div>
       </div>

@@ -17,12 +17,12 @@ export default function LegalNotice() {
   };
 
   return (
-    <main className="min-h-screen bg-white/30 backdrop-blur-[2px] flex flex-col relative z-10 font-sans">
+    <main className="min-h-screen bg-steward-offwhite flex flex-col relative z-10 font-exo">
       {/* Header - Matching Page 2 Dark Theme */}
-      <header className="bg-[#2D3748] px-4 md:px-8 py-3 flex justify-between items-center sticky top-0 z-50 shadow-md">
+      <header className="bg-steward-dark px-4 md:px-8 py-3 flex justify-between items-center sticky top-0 z-50 shadow-md">
         {/* 1. Logo (SW blue circle, link to pg 5) */}
         <div 
-          className="w-10 h-10 bg-[#4D8AC9] rounded-full flex items-center justify-center font-black text-white text-sm cursor-pointer hover:scale-105 transition-transform" 
+          className="w-10 h-10 bg-steward-blue rounded-full flex items-center justify-center font-black text-white text-sm cursor-pointer hover:scale-105 transition-transform" 
           onClick={() => router.push('/hub')}
         >
           SW
@@ -36,7 +36,7 @@ export default function LegalNotice() {
         {/* 3. Button (Save Progress, top right) */}
         <button 
           onClick={handleSaveProgress}
-          className="bg-[#48BB78] hover:bg-[#38A169] text-white px-4 py-1.5 rounded-md text-sm font-bold shadow-sm transition-all active:scale-95"
+          className="bg-steward-green hover:bg-steward-orange text-white px-4 py-1.5 rounded-md text-sm font-bold shadow-sm transition-all active:scale-95"
         >
           Save Progress
         </button>
@@ -46,13 +46,13 @@ export default function LegalNotice() {
       <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col space-y-8 py-10 px-6 pb-32">
         
         {/* 1. Text Content Area - Based on Terms of Use & Digital Creator Rights.jpg */}
-        <div className="bg-white border border-[#E2E8F0] rounded-xl p-8 md:p-12 shadow-sm font-sans text-[#2D3748] overflow-y-auto max-h-[60vh]">
+        <div className="bg-white border border-steward-gold/20 rounded-xl p-8 md:p-12 shadow-sm font-exo text-steward-dark overflow-y-auto max-h-[60vh]">
           <h2 className="text-2xl font-bold mb-2">Terms of Use & Digital Creator Rights</h2>
-          <p className="text-sm text-[#718096] mb-8 font-medium text-left">Effective Date: January 8, 2026</p>
+          <p className="text-sm text-steward-gold mb-8 font-medium text-left">Effective Date: January 8, 2026</p>
           
           <div className="space-y-8 text-left">
             <section>
-              <h3 className="text-lg font-bold text-[#4D8AC9] mb-3">1. Your Rights as a Digital Creator</h3>
+              <h3 className="text-lg font-bold text-steward-blue mb-3">1. Your Rights as a Digital Creator</h3>
               <p className="text-sm leading-relaxed mb-3">
                 As a participant in the AI Content Creation & Environmental Literacy Hub, you retain ALL intellectual property rights to content you create. This includes:
               </p>
@@ -65,7 +65,7 @@ export default function LegalNotice() {
             </section>
 
             <section>
-              <h3 className="text-lg font-bold text-[#4D8AC9] mb-3">2. California Creator Protections</h3>
+              <h3 className="text-lg font-bold text-steward-blue mb-3">2. California Creator Protections</h3>
               <p className="text-sm leading-relaxed mb-3">
                 Under California law, including provisions aligned with the California Consumer Privacy Act (CCPA) and Digital Creator Rights, you have the right to:
               </p>
@@ -78,7 +78,7 @@ export default function LegalNotice() {
             </section>
 
             <section>
-              <h3 className="text-lg font-bold text-[#4D8AC9] mb-3">3. Platform Use of Student Work</h3>
+              <h3 className="text-lg font-bold text-steward-blue mb-3">3. Platform Use of Student Work</h3>
               <p className="text-sm leading-relaxed mb-3">
                 Stewardworks.space may request permission to showcase exemplary student work for educational and promotional purposes. We will:
               </p>
@@ -91,7 +91,7 @@ export default function LegalNotice() {
             </section>
 
             <section>
-              <h3 className="text-lg font-bold text-[#4D8AC9] mb-3">4. Data Privacy & Educational Use</h3>
+              <h3 className="text-lg font-bold text-steward-blue mb-3">4. Data Privacy & Educational Use</h3>
               <p className="text-sm leading-relaxed mb-3">
                 Your personal information and educational data will be:
               </p>
@@ -109,17 +109,17 @@ export default function LegalNotice() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end pt-4">
           {/* 1. Signature Field (Bottom Left) */}
           <div className="space-y-4">
-            <div className="bg-white border-2 border-[#E2E8F0] rounded-xl p-6 shadow-sm">
-              <label className="block text-sm font-bold text-[#1A202C] mb-6">
+            <div className="bg-white border-2 border-steward-gold/20 rounded-xl p-6 shadow-sm">
+              <label className="block text-sm font-bold text-steward-dark mb-6">
                 I acknowledge that I have read and understand my rights
               </label>
               <div className="flex flex-col space-y-2">
-                <span className="text-[10px] text-[#718096] uppercase font-bold tracking-wider">Signature / Name:</span>
+                <span className="text-[10px] text-steward-gold uppercase font-bold tracking-wider">Signature / Name:</span>
                 <input 
                   type="text" 
                   value={signature}
                   onChange={(e) => setSignature(e.target.value)}
-                  className="w-full bg-transparent border-b-2 border-dashed border-[#4D8AC9] py-2 focus:outline-none font-medium text-[#2D3748]"
+                  className="w-full bg-transparent border-b-2 border-dashed border-steward-blue py-2 focus:outline-none font-medium text-steward-dark font-exo"
                   placeholder="Type your name here..."
                 />
               </div>
@@ -133,8 +133,8 @@ export default function LegalNotice() {
               onClick={() => router.push('/onboarding/objectives')}
               className={`w-full md:w-auto px-12 py-4 rounded-xl shadow-lg transition-all duration-300 font-bold text-lg uppercase tracking-widest ${
                 signature.trim() 
-                ? 'bg-[#4D8AC9] hover:bg-[#3D7AB9] text-white hover:scale-[1.02] active:scale-95' 
-                : 'bg-[#E2E8F0] text-[#A0AEC0] cursor-not-allowed'
+                ? 'bg-steward-blue hover:bg-steward-orange text-white hover:scale-[1.02] active:scale-95' 
+                : 'bg-steward-gold/20 text-steward-gold/50 cursor-not-allowed'
               }`}
             >
               I Accept & Continue
@@ -143,7 +143,7 @@ export default function LegalNotice() {
         </div>
 
         {/* Footer Support Text */}
-        <p className="text-center text-[10px] text-[#718096] font-medium pt-4 pb-10">
+        <p className="text-center text-[10px] text-steward-gold font-medium pt-4 pb-10">
           Questions about your rights? Contact: support@stewardworks.space
         </p>
       </div>

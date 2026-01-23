@@ -3,155 +3,149 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
-import { Plus } from 'lucide-react';
+import { Plus, Check } from 'lucide-react';
 
 export default function OnboardingQuestions() {
   const { t } = useLanguage();
   const router = useRouter();
   
-  const [formData, setFormData] = useState({
-    name: '',
-    residency: '',
-    learnerType: '',
-    dreamJob: ''
+  // State for all 10 questions
+  const [answers, setAnswers] = useState<Record<number, string | string[]>>({
+    1: '', 2: [], 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '', 10: []
   });
 
-  const handleSaveProgress = () => {
-    alert('Progress saved to your email!');
+  const questions = [
+    { id: 1, required: true, type: 'single' },
+    { id: 2, required: true, type: 'multiple' },
+    { id: 3, required: true, type: 'single' },
+    { id: 4, required: true, type: 'single' },
+    { id: 5, required: true, type: 'single' },
+    { id: 6, required: true, type: 'single' },
+    { id: 7, required: true, type: 'single' },
+    { id: 8, required: false, type: 'single' },
+    { id: 9, required: false, type: 'single' },
+    { id: 10, required: false, type: 'multiple' },
+  ];
+
+  const handleSingleSelect = (qId: number, option: string) => {
+    setAnswers(prev => ({ ...prev, [qId]: option }));
   };
 
+  const handleMultiSelect = (qId: number, option: string) => {
+    setAnswers(prev => {
+      const current = prev[qId] as string[];
+      if (current.includes(option)) {
+        return { ...prev, [qId]: current.filter(o => o !== option) };
+      } else {
+        return { ...prev, [qId]: [...current, option] };
+      }
+    });
+  };
+
+  const isComplete = questions
+    .filter(q => q.required)
+    .every(q => {
+      const ans = answers[q.id];
+      return Array.isArray(ans) ? ans.length > 0 : ans !== '';
+    });
+
   return (
-    <main className="min-h-screen bg-white/30 backdrop-blur-[2px] flex flex-col relative z-10 font-sans">
-      {/* Header - Dark theme as per reference */}
-      <header className="bg-[#2D3748] px-4 md:px-8 py-3 flex justify-between items-center sticky top-0 z-50 shadow-md">
-        {/* 1. Logo (SW blue circle, link to pg 5) */}
+    <div className="min-h-screen bg-steward-offwhite flex flex-col relative z-10 font-exo">
+      <header className="bg-steward-dark px-4 md:px-8 py-3 flex justify-between items-center sticky top-0 z-50 shadow-md">
         <div 
-          className="w-10 h-10 bg-[#4D8AC9] rounded-full flex items-center justify-center font-black text-white text-sm cursor-pointer hover:scale-105 transition-transform" 
+          className="w-10 h-10 bg-steward-blue rounded-full flex items-center justify-center font-black text-white text-sm cursor-pointer hover:scale-105 transition-transform" 
           onClick={() => router.push('/hub')}
         >
           SW
         </div>
-        
-        {/* 2. Text (Onboarding Questions, center top) */}
         <h1 className="text-lg md:text-xl font-bold text-white tracking-tight">
-          Onboarding Questions
+          {t('onboarding.title')}
         </h1>
-        
-        {/* 3. Button (Save Progress, top right - Green) */}
         <button 
-          onClick={handleSaveProgress}
-          className="bg-[#48BB78] hover:bg-[#38A169] text-white px-4 py-1.5 rounded-md text-sm font-bold shadow-sm transition-all active:scale-95"
+          onClick={() => alert('Progress saved!')}
+          className="bg-steward-green hover:bg-steward-orange text-white px-4 py-1.5 rounded-md text-sm font-bold shadow-sm transition-all active:scale-95"
         >
-          Save Progress
+          {t('onboarding.save')}
         </button>
       </header>
 
-      {/* Body */}
-      <div className="max-w-xl mx-auto w-full flex-1 flex flex-col space-y-10 py-10 px-6">
-        
-        {/* 1. Photo upload for profile */}
+      <div className="max-w-2xl mx-auto w-full flex-1 flex flex-col space-y-12 py-10 px-6">
         <section className="flex flex-col items-center space-y-2">
-          <div className="w-28 h-28 bg-[#E2E8F0] border-2 border-[#4D8AC9] rounded-full flex flex-col items-center justify-center text-[#4D8AC9] cursor-pointer hover:bg-[#EDF2F7] transition-colors relative group overflow-hidden">
+          <div className="w-28 h-28 bg-white border-2 border-steward-blue rounded-full flex flex-col items-center justify-center text-steward-blue cursor-pointer hover:bg-steward-cream transition-colors relative group overflow-hidden shadow-inner">
             <Plus size={32} />
             <input type="file" className="absolute inset-0 opacity-0 cursor-pointer" />
           </div>
-          <span className="text-[10px] font-bold text-[#718096] uppercase">Upload Photo</span>
+          <span className="text-[10px] font-bold text-steward-gold uppercase">Upload Photo</span>
         </section>
 
-        {/* Questions */}
-        <div className="space-y-10">
-          {/* 2. Name Question */}
-          <div className="space-y-3 text-center">
-            <label className="block space-y-1">
-              <span className="text-xl font-bold text-[#1A202C] block">Name</span>
-              {/* Subtext 1 */}
-              <span className="text-[11px] text-[#718096] block font-medium">
-                (Optional) Real Name Required for account recovery only
-              </span>
-            </label>
-            {/* 3. Text Answer field */}
-            <input 
-              type="text" 
-              className="w-full bg-white border border-[#E2E8F0] rounded-lg p-3 text-center focus:outline-none focus:ring-2 focus:ring-[#4D8AC9]/20 focus:border-[#4D8AC9] transition-all font-medium text-[#2D3748]"
-              placeholder="Your name"
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-            />
-          </div>
+        <div className="space-y-16">
+          {questions.map((q) => {
+            const options = t(`onboarding.q${q.id}.options`).split(',');
+            const currentAnswer = answers[q.id];
 
-          {/* 4. Residency Question */}
-          <div className="space-y-4 text-center">
-            <label className="block">
-              <span className="text-xl font-bold text-[#1A202C] block leading-tight">
-                How long have you called Imperial County home?
-              </span>
-            </label>
-            {/* 5. Multiple choice box Answer field */}
-            <div className="space-y-2 max-w-sm mx-auto">
-              {[
-                { id: 'less-1', label: 'Less than a year' },
-                { id: '1-5', label: '1-5 years' },
-                { id: 'more-5', label: '5 years or more' },
-                { id: 'multi', label: 'Multigenerational' }
-              ].map((choice) => (
-                <button 
-                  key={choice.id}
-                  onClick={() => setFormData({...formData, residency: choice.id})}
-                  className={`w-full flex items-center p-3 border rounded-lg transition-all ${
-                    formData.residency === choice.id 
-                    ? 'border-[#4D8AC9] bg-[#EBF8FF] text-[#2B6CB0] font-bold ring-1 ring-[#4D8AC9]' 
-                    : 'border-[#E2E8F0] bg-white text-[#4A5568] hover:border-[#CBD5E0]'
-                  }`}
-                >
-                  <div className={`w-4 h-4 rounded-full border flex items-center justify-center mr-3 ${
-                    formData.residency === choice.id ? 'border-[#4D8AC9] bg-white' : 'border-[#E2E8F0]'
-                  }`}>
-                    {formData.residency === choice.id && <div className="w-2 h-2 bg-[#4D8AC9] rounded-full" />}
+            return (
+              <div key={q.id} className="space-y-6">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="bg-steward-blue text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">
+                      {q.id}
+                    </span>
+                    <h2 className="text-xl font-bold text-steward-dark leading-tight">
+                      {t(`onboarding.q${q.id}.title`)}
+                    </h2>
                   </div>
-                  <span className="text-sm">{choice.label}</span>
-                </button>
-              ))}
-            </div>
-          </div>
+                  <span className={`text-[10px] font-black uppercase tracking-widest ${q.required ? 'text-steward-orange' : 'text-steward-gold/50'}`}>
+                    {q.required ? t('onboarding.required') : t('onboarding.optional')}
+                  </span>
+                </div>
 
-          {/* 6. Learner Question */}
-          <div className="space-y-3 text-center">
-            <label className="block">
-              <span className="text-xl font-bold text-[#1A202C] block">What type of learner are you?</span>
-            </label>
-            {/* 7. Text Answer field */}
-            <input 
-              type="text" 
-              className="w-full bg-white border border-[#E2E8F0] rounded-lg p-3 text-center focus:outline-none focus:ring-2 focus:ring-[#4D8AC9]/20 focus:border-[#4D8AC9] transition-all font-medium text-[#2D3748]"
-              placeholder="e.g. Visual, Hands-on"
-              onChange={(e) => setFormData({...formData, learnerType: e.target.value})}
-            />
-          </div>
+                <div className="grid grid-cols-1 gap-3">
+                  {options.map((option, idx) => {
+                    const isSelected = Array.isArray(currentAnswer) 
+                      ? currentAnswer.includes(option) 
+                      : currentAnswer === option;
 
-          {/* 8. Dream Job Question */}
-          <div className="space-y-3 text-center">
-            <label className="block">
-              <span className="text-xl font-bold text-[#1A202C] block">What is your dream Eco job?</span>
-            </label>
-            {/* 9. Text Answer field (TextArea for more space) */}
-            <textarea 
-              rows={4}
-              className="w-full bg-white border border-[#E2E8F0] rounded-lg p-3 text-center focus:outline-none focus:ring-2 focus:ring-[#4D8AC9]/20 focus:border-[#4D8AC9] transition-all font-medium text-[#2D3748] resize-none"
-              placeholder="Tell us about your dream job..."
-              onChange={(e) => setFormData({...formData, dreamJob: e.target.value})}
-            />
-          </div>
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => q.type === 'single' ? handleSingleSelect(q.id, option) : handleMultiSelect(q.id, option)}
+                        className={`group flex items-center p-4 border-2 rounded-xl transition-all text-left ${
+                          isSelected 
+                          ? 'border-steward-blue bg-steward-cream text-steward-blue shadow-md' 
+                          : 'border-steward-gold/10 bg-white text-steward-dark/70 hover:border-steward-gold'
+                        }`}
+                      >
+                        <div className={`w-5 h-5 rounded-md border-2 mr-4 flex items-center justify-center transition-colors ${
+                          isSelected ? 'bg-steward-blue border-steward-blue' : 'border-steward-gold/20'
+                        }`}>
+                          {isSelected && <Check size={14} className="text-white" />}
+                        </div>
+                        <span className={`text-sm font-medium ${isSelected ? 'font-bold' : ''}`}>
+                          {option}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Footer Navigation */}
-        <div className="flex justify-center pt-8 pb-10">
+        <div className="flex justify-center pt-12 pb-20">
           <button 
+            disabled={!isComplete}
             onClick={() => router.push('/onboarding/legal')}
-            className="w-full max-w-xs py-4 bg-[#4D8AC9] hover:bg-[#3D7AB9] text-white font-black rounded-xl shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-95 uppercase tracking-widest text-sm"
+            className={`w-full max-w-sm py-5 rounded-2xl shadow-xl transition-all duration-300 font-black uppercase tracking-widest text-base ${
+              isComplete 
+              ? 'bg-steward-blue hover:bg-steward-orange text-white hover:scale-[1.02] active:scale-95' 
+              : 'bg-steward-gold/20 text-steward-gold/40 cursor-not-allowed opacity-50'
+            }`}
           >
-            Continue
+            {t('onboarding.continue')}
           </button>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

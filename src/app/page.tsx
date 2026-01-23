@@ -32,48 +32,70 @@ export default function PreHome() {
         </div>
 
         {/* Text Section (Center Right) */}
-        <div className="md:col-span-7 flex flex-col space-y-8 text-eden-green">
+        <div className="md:col-span-7 flex flex-col space-y-8 text-steward-green">
           {/* 2. Mission Phrase (Numen Aquae) - Top Right */}
           <div className="space-y-2">
-            <h1 className="text-5xl md:text-7xl font-sans font-black uppercase tracking-tighter leading-none animate-in fade-in slide-in-from-right-10 duration-1000">
+            <h1 className="text-5xl md:text-7xl font-exo font-black uppercase tracking-tighter leading-none animate-in fade-in slide-in-from-right-10 duration-1000">
               {t('mission.phrase')}
             </h1>
-            <div className="h-[2px] w-24 bg-eden-green/20" />
+            <div className="h-[2px] w-24 bg-steward-orange" />
           </div>
 
           {/* 3. Mission Statement - Center Right below phrase */}
           <div className="max-w-xl animate-in fade-in slide-in-from-right-10 duration-1000 delay-300">
-            <p className="text-base md:text-lg font-sans leading-relaxed tracking-tight font-medium opacity-90">
+            <p className="text-xl md:text-2xl font-exo leading-relaxed tracking-tight font-bold opacity-90">
               {t('mission.body')}
             </p>
           </div>
 
           {/* 4. Horizontal Line element */}
-          <div className="w-full h-[1px] bg-eden-green/20" />
+          <div className="w-full h-[1px] bg-steward-gold/30" />
 
           {/* 5. Credits - Center Right below line */}
           <div className="flex flex-col space-y-4 animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-500">
-            <p className="text-[10px] font-lofi uppercase tracking-[0.3em] text-eden-earth">
+            <p className="text-[10px] font-lofi uppercase tracking-[0.3em] text-steward-gold">
               {t('credits')}
             </p>
-            <div className="relative w-64 h-20 grayscale opacity-40 hover:opacity-100 transition-all duration-500">
-              <Image 
-                src="/partner_logo_strip_current.jpg" 
-                alt="Partner Logos" 
-                fill
-                style={{ objectFit: 'contain', objectPosition: 'left' }}
-              />
+            <div className="flex items-center space-x-8">
+              <div className="relative w-32 h-16 grayscale opacity-60 hover:opacity-100 transition-all duration-500">
+                <Image 
+                  src="/partner_logo_strip_current.jpg" 
+                  alt="California Jobs First" 
+                  fill
+                  style={{ objectFit: 'contain', objectPosition: 'left' }}
+                />
+              </div>
+              <div className="w-4" /> {/* Space between logos as requested */}
+              <div className="relative w-32 h-16 grayscale opacity-60 hover:opacity-100 transition-all duration-500">
+                {/* Assuming there might be another logo or we use the same strip but positioned differently if possible */}
+                {/* For now, I'll just add space and use the strip. If they are in one image, I'll just use one container with more width. */}
+                <Image 
+                  src="/partner_logo_strip_current.jpg" 
+                  alt="Partner Logos" 
+                  fill
+                  style={{ objectFit: 'contain', objectPosition: 'right' }}
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 6. Button (Center Bottom) */}
-      <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20">
+      {/* 6. Buttons (Center Bottom) */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col md:flex-row gap-6 items-center">
+        <Link href="/info">
+          <button className="group relative overflow-hidden px-12 py-4 text-lg font-bold tracking-[0.1em] transition-all duration-300 border-2 border-steward-gold text-steward-gold hover:bg-steward-gold hover:text-steward-offwhite bg-transparent rounded-full">
+            <span className="relative z-10">{t('learn.more')}</span>
+          </button>
+        </Link>
         <Link href="/onboarding/language">
-          <button className="group relative overflow-hidden lofi-button px-20 py-5 text-xl font-bold tracking-[0.2em] transition-all duration-300 hover:bg-eden-green hover:text-eden-beige bg-white">
+          <button className="group relative overflow-hidden px-16 py-4 text-lg font-bold tracking-[0.1em] transition-all duration-300 bg-steward-green text-steward-offwhite hover:bg-steward-orange rounded-full shadow-lg">
             <span className="relative z-10">{t('enter.site')}</span>
-            <div className="absolute inset-0 bg-eden-green transform translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
+          </button>
+        </Link>
+        <Link href="/onboarding/bulletin">
+          <button className="group relative overflow-hidden px-8 py-4 text-sm font-bold tracking-[0.1em] transition-all duration-300 border border-steward-dark/30 text-steward-dark hover:bg-steward-dark hover:text-steward-offwhite bg-white/50 rounded-full">
+            <span className="relative z-10">Project Bulletin</span>
           </button>
         </Link>
       </div>

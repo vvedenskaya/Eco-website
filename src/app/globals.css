@@ -2,64 +2,212 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Exo';
+  src: url('/fonts/Exo-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Exo';
+  src: url('/fonts/Exo-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
-  --foreground-rgb: 45, 75, 62;
-  --background-rgb: 245, 242, 237;
+  --foreground-rgb: 33, 40, 46;
+  --background-rgb: 254, 250, 224;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
-  font-family: 'Inter', sans-serif;
+  font-family: 'Exo', sans-serif;
 }
 
 .font-lofi {
   font-family: 'Courier New', Courier, monospace;
 }
 
-/* Cozy Book Aesthetic - Simplified */
-.book-container {
-  @apply relative min-h-screen overflow-x-hidden;
-  background: #FDFBF7;
+.font-exo {
+  font-family: 'Exo', sans-serif;
 }
 
-.paper-texture {
-  background-image: radial-gradient(rgba(45, 75, 62, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
+/* Custom Animation Utilities (replacing tailwindcss-animate to fix build error) */
+@layer utilities {
+  .animate-in {
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fade-in {
+    @apply opacity-0;
+    animation-name: custom-fade-in;
+  }
+
+  .zoom-in-95 {
+    animation-name: custom-zoom-in;
+  }
+
+  .slide-in-from-left-10 {
+    animation-name: custom-slide-in-left;
+  }
+
+  .slide-in-from-right-10 {
+    animation-name: custom-slide-in-right;
+  }
+
+  .slide-in-from-bottom-5 {
+    animation-name: custom-slide-in-bottom;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+  
+  .duration-700 {
+    animation-duration: 700ms;
+  }
+  
+  .duration-1000 {
+    animation-duration: 1000ms;
+  }
 }
 
-/* Immersive Cozy Scene - High Visuals */
-.book-container {
-  @apply relative min-h-screen overflow-x-hidden bg-[#121212];
+@keyframes custom-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Base atmosphere - Warm vs Cold light */
-.scene-lighting {
-  @apply fixed inset-0 z-0 pointer-events-none;
-  background: 
-    radial-gradient(circle at 90% 10%, rgba(255, 180, 50, 0.15) 0%, transparent 40%), /* Lamp glow */
-    radial-gradient(circle at 10% 20%, rgba(100, 150, 255, 0.08) 0%, transparent 50%), /* Window glow */
-    #FDFBF7;
+@keyframes custom-zoom-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-.cozy-object {
-  @apply fixed z-0 pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)];
+@keyframes custom-slide-in-left {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-.main-lamp {
-  @apply top-[-5%] right-[-5%] w-[400px] h-[400px] rotate-[-15deg] opacity-80 brightness-90;
+@keyframes custom-slide-in-right {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-.main-books {
-  @apply bottom-[-5%] left-[-5%] w-[350px] h-[350px] rotate-[10deg] opacity-90 brightness-95;
+@keyframes custom-slide-in-bottom {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.main-decor {
-  @apply top-[15%] left-[-2%] w-[250px] h-[250px] rotate-[-5deg] opacity-40 grayscale-[0.3];
+/* Retro Laptop Frame Interface (Only for Hub) */
+.laptop-frame-wrapper {
+  @apply relative w-full min-h-screen flex items-center justify-center p-4 md:p-8 bg-[#A5C7F7] overflow-x-hidden;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 70%),
+    linear-gradient(180deg, #A5C7F7 0%, #7DAAFE 100%);
 }
 
-.desk-vibe {
-  @apply fixed bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/20 to-transparent z-0;
+/* Desk Surface */
+.desk-surface {
+  @apply absolute bottom-0 left-0 w-full h-32 md:h-48 bg-[#E5E7EB] border-t-[1px] border-white/20;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 100%);
+  box-shadow: inset 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.laptop-outer-shell {
+  @apply relative w-full max-w-[1100px] flex flex-col z-20;
+  perspective: 1500px;
+  animation: laptop-appear 0.7s ease-out forwards;
+}
+
+@keyframes laptop-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.laptop-bezel {
+  @apply relative flex-1 bg-[#E2E8F0] border-[16px] md:border-[32px] border-[#CBD5E0] rounded-t-[50px] shadow-2xl overflow-hidden flex flex-col;
+  box-shadow: 
+    inset 0 4px 20px rgba(255,255,255,0.5),
+    inset 0 -4px 20px rgba(0,0,0,0.2),
+    0 50px 100px -20px rgba(0,0,0,0.5);
+  border-bottom: none;
+}
+
+/* iBook-style Translucency */
+.laptop-bezel::before {
+  content: '';
+  @apply absolute inset-0 opacity-30 pointer-events-none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+}
+
+.laptop-screen-content {
+  @apply flex-1 bg-white overflow-hidden relative flex flex-col h-[60vh] md:h-[70vh] border-4 border-[#94A3B8] rounded-sm m-2 md:m-4;
+  box-shadow: 
+    inset 0 0 40px rgba(0,0,0,0.1),
+    0 0 0 2px rgba(0,0,0,0.05);
+}
+
+/* Keyboard / Base Area */
+.laptop-base-part {
+  @apply h-40 md:h-56 bg-[#C0C0C0] rounded-b-[40px] shadow-2xl border-t-8 border-[#808080] relative flex flex-col items-center justify-start pt-6 px-4 md:px-8;
+  background: linear-gradient(180deg, #D3D3D3 0%, #A9A9A9 100%);
+  transform: rotateX(25deg);
+  transform-origin: top;
+  box-shadow: 
+    inset 0 4px 10px rgba(255,255,255,0.8),
+    0 10px 20px rgba(0,0,0,0.2);
+}
+
+.keyboard-grid {
+  @apply grid grid-cols-12 gap-1 md:gap-2 w-full max-w-2xl px-2 md:px-4;
+}
+
+.key-cap {
+  @apply bg-[#D1D5DB] border-2 border-[#808080] rounded-sm shadow-[0_3px_0_#404040] flex items-center justify-center text-[5px] md:text-[9px] font-mono font-bold text-[#404040] transition-all cursor-pointer active:translate-y-[1px] active:shadow-[0_1px_0_#404040] h-6 md:h-10;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+/* Retro Lamp Graphic */
+.retro-lamp {
+  @apply absolute bottom-0 left-0 w-64 h-[400px] pointer-events-none opacity-90 z-[-1];
+}
+
+.lamp-base {
+  @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#374151] rounded-full shadow-lg;
+}
+
+.lamp-arm {
+  @apply absolute bottom-6 left-1/2 -translate-x-1/2 w-3 h-[300px] bg-[#4B5563] origin-bottom -rotate-6 border-x border-[#1F2937];
+}
+
+.lamp-shade {
+  @apply absolute top-0 left-[-20px] w-48 h-32 bg-[#FFD700] rounded-full shadow-[0_0_150px_rgba(255,215,0,0.4)];
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+  border-top: 6px solid #B8860B;
+}
+
+.lamp-bulb {
+  @apply absolute bottom-2 left-1/2 -translate-x-1/2 w-12 h-12 bg-white rounded-full blur-lg animate-pulse opacity-80;
+}
+
+.lamp-glow {
+  @apply absolute top-16 left-[-60px] w-[500px] h-[500px] bg-yellow-100/20 blur-[100px] rounded-full;
 }
 
 .book-edge-left {
@@ -70,6 +218,11 @@ body {
 .book-edge-right {
   @apply absolute right-0 top-0 h-full w-8 md:w-12 opacity-30 pointer-events-none border-l border-eden-green;
   background: repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(45, 75, 62, 0.2) 3px, transparent 4px);
+}
+
+.paper-texture {
+  background-image: radial-gradient(rgba(45, 75, 62, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 /* Lofi UI Elements */
