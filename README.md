@@ -1,44 +1,44 @@
-# Lit Hub | StewardWorks
+# 🌿 StewardWorks - Project Preview Guide
 
-**Lit Hub** (stewardworks.space) is a lofi, low-data-cost educational and career roadmap portal designed to help users transition into environmental and "Eco" jobs. 
-
-The project focuses on accessibility, providing a clear, step-by-step path for job seekers to identify their goals, gain necessary skills, and navigate the workforce landscape in the environmental sector.
+This repository contains the prototype for the StewardWorks website. Follow these simple steps to launch the site on your computer and view the latest updates.
 
 ---
 
-## 🌍 Project Mission
-Our goal is to lower the barrier to entry for environmental careers by providing a simple, inviting, and data-efficient platform. We believe that finding a path to a sustainable career should be intuitive and accessible to everyone, regardless of their data plan or technical background.
+## ⚡️ Quick Start Guide
 
-## ✨ Key Features
-- **Bilingual Support:** Full site accessibility in both English and Spanish from the first click.
-- **Guided Onboarding:** A thoughtful process to build user profiles and identify career aspirations (e.g., "What is your dream Eco-job?").
-- **Career Roadmap:** A visual "Three Tiered Pillars" system that maps out learning objectives and career milestones.
-- **Interactive Learning Hub:** 
-  - Integrated Text-to-Speech (English & Spanish).
-  - Lofi Video Player optimized for low bandwidth.
-  - Interactive Notes and Assignment management for both students and teachers.
-  - Workforce roadmap interactive map.
-- **Low-Data Design:** A "lofi" aesthetic that prioritizes speed and accessibility over heavy graphics.
+### 1. Install Node.js
+To run the website, you need a small "engine" called **Node.js**.
+*   **Download here:** [https://nodejs.org/](https://nodejs.org/)
+*   Please choose the version labeled **"LTS"** (Recommended for most users).
+*   Run the installer and follow the standard installation prompts.
 
-## 🛠 Design Philosophy
-- **Simple & Inviting:** Minimalist interfaces that reduce cognitive load.
-- **Low Data Cost:** Optimized assets and code to ensure the site is usable on slow or limited connections.
-- **Lofi Aesthetic:** A unique design tone that is both modern and resource-efficient.
+### 2. Launch the Project
+1.  **Open your Terminal:**
+    *   **On Mac:** Press `Cmd + Space`, type "Terminal" and hit Enter.
+    *   **On Windows:** Click Start, type "PowerShell" and hit Enter.
+2.  **Navigate to the folder:**
+    *   Type `cd ` (with a space after it) in the terminal.
+    *   **Drag and drop** the website folder directly into the terminal window.
+    *   Press **Enter**.
+3.  **Install components** (Required only the first time):
+    *   Type `npm install` and press **Enter**.
+    *   Wait for the process to finish (usually takes 1-2 minutes).
+4.  **Start the website:**
+    *   Type `npm run dev` and press **Enter**.
 
-## 🚀 MVP Roadmap
-1. **Foundation:** Splash page and bilingual onboarding.
-2. **Profile & Compliance:** User data collection and legal sign-off.
-3. **The Hub:** Central Information/Helpdesk and navigation system.
-4. **Career Visuals:** Interactive workforce roadmaps and pillar-based objective tracking.
-
----
-
-## 🛠 Tech Stack (Proposed)
-- **Frontend:** Next.js / React (Optimized for performance).
-- **Styling:** Tailwind CSS (Low-weight, utility-first).
-- **Backend/DB:** Supabase or Firebase (Real-time data and easy auth).
-- **Media:** Custom compression for low-data image and video delivery.
+### 3. View the Website
+Once you see a message saying `Ready` or `Local: http://localhost:3000`, do the following:
+1.  Open your web browser (Chrome, Safari, Edge, etc.).
+2.  Go to this address: **[http://localhost:3000](http://localhost:3000)**
 
 ---
 
-*Part of the Nureaum initiative for environmental stewardship.*
+## 💡 Important Tips
+*   **Keep the Terminal Open:** The website will only work as long as the terminal window is open and the process is running.
+*   **How to Stop:** To stop the website, go to the terminal and press `Ctrl + C`.
+*   **Automatic Updates:** If we make changes to the code, you just need to refresh your browser to see the latest version.
+
+---
+
+### 📞 Support
+If you have any trouble getting the site to run, please reach out!

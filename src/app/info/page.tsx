@@ -29,7 +29,7 @@ export default function InfoPage() {
           <p className="text-sm font-lofi uppercase tracking-widest text-steward-gold">
             {t('credits')}
           </p>
-          <div className="relative w-full h-32 md:h-48 grayscale opacity-80">
+          <div className="relative w-full h-16 md:h-24 grayscale opacity-80">
             <Image 
               src="/partner_logo_strip_current.jpg" 
               alt="Partner Logos" 

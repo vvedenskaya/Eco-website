@@ -56,26 +56,13 @@ export default function PreHome() {
             <p className="text-[10px] font-lofi uppercase tracking-[0.3em] text-steward-gold">
               {t('credits')}
             </p>
-            <div className="flex items-center space-x-8">
-              <div className="relative w-32 h-16 grayscale opacity-60 hover:opacity-100 transition-all duration-500">
-                <Image 
-                  src="/partner_logo_strip_current.jpg" 
-                  alt="California Jobs First" 
-                  fill
-                  style={{ objectFit: 'contain', objectPosition: 'left' }}
-                />
-              </div>
-              <div className="w-4" /> {/* Space between logos as requested */}
-              <div className="relative w-32 h-16 grayscale opacity-60 hover:opacity-100 transition-all duration-500">
-                {/* Assuming there might be another logo or we use the same strip but positioned differently if possible */}
-                {/* For now, I'll just add space and use the strip. If they are in one image, I'll just use one container with more width. */}
-                <Image 
-                  src="/partner_logo_strip_current.jpg" 
-                  alt="Partner Logos" 
-                  fill
-                  style={{ objectFit: 'contain', objectPosition: 'right' }}
-                />
-              </div>
+            <div className="relative w-64 h-16 grayscale opacity-60 hover:opacity-100 transition-all duration-500">
+              <Image 
+                src="/partner_logo_strip_current.jpg" 
+                alt="Partner Logos" 
+                fill
+                style={{ objectFit: 'contain', objectPosition: 'left' }}
+              />
             </div>
           </div>
         </div>
