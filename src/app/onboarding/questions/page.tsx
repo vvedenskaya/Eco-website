@@ -61,12 +61,20 @@ export default function OnboardingQuestions() {
         <h1 className="text-lg md:text-xl font-bold text-white tracking-tight">
           {t('onboarding.title')}
         </h1>
-        <button 
-          onClick={() => alert('Progress saved!')}
-          className="bg-steward-green hover:bg-steward-orange text-white px-4 py-1.5 rounded-md text-sm font-bold shadow-sm transition-all active:scale-95"
-        >
-          {t('onboarding.save')}
-        </button>
+        <div className="flex gap-3">
+          <button 
+            onClick={() => router.push('/onboarding/legal')}
+            className="text-white/60 hover:text-white px-3 py-1.5 rounded-md text-xs font-bold transition-all"
+          >
+            {t('onboarding.skip')}
+          </button>
+          <button 
+            onClick={() => alert('Progress saved!')}
+            className="bg-steward-green hover:bg-steward-orange text-white px-4 py-1.5 rounded-md text-sm font-bold shadow-sm transition-all active:scale-95"
+          >
+            {t('onboarding.save')}
+          </button>
+        </div>
       </header>
 
       <div className="max-w-2xl mx-auto w-full flex-1 flex flex-col space-y-12 py-10 px-6">

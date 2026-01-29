@@ -44,10 +44,10 @@ export default function BulletinPage() {
         }}
       />
 
-      <div className="relative z-20 max-w-6xl mx-auto px-6 pt-32 pb-32">
+      <div className="relative z-20 max-w-[1400px] mx-auto px-4 pt-32 pb-32">
         {/* Page Header */}
         <div className="text-center mb-20 space-y-6">
-          <h1 className="text-5xl md:text-7xl font-black text-steward-dark uppercase tracking-tighter drop-shadow-2xl inline-block relative">
+          <h1 className="text-5xl md:text-8xl font-black text-steward-dark uppercase tracking-tighter drop-shadow-2xl inline-block relative">
             {t('bulletin.title')}
             <div className="absolute -top-6 -right-6 animate-bounce">
               <Pin className="text-red-600 rotate-45" size={48} fill="currentColor" />
@@ -63,37 +63,39 @@ export default function BulletinPage() {
         </div>
 
         {/* Bulletin Board Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           {sections.map((section, sIdx) => (
             <div key={section.id} className="relative group">
-              {/* Paper Background Style (Inspired by Image 1) */}
-              <div className="absolute -inset-2 bg-white/10 blur-xl rounded-3xl transition-all group-hover:bg-white/20" />
+              {/* Paper Background Style */}
+              <div className="absolute -inset-2 bg-white/5 blur-xl rounded-3xl transition-all group-hover:bg-white/10" />
               
-              <div className="relative bg-white shadow-[5px_5px_0px_rgba(0,0,0,0.1),15px_15px_30px_rgba(0,0,0,0.15)] p-8 md:p-12 min-h-[600px] border-t-[20px] border-steward-gold/10 transform rotate-1 transition-transform group-hover:rotate-0">
+              <div className="relative bg-white shadow-[5px_5px_0px_rgba(0,0,0,0.05),10px_10px_20px_rgba(0,0,0,0.1)] p-8 md:p-16 min-h-[700px] border-t-[30px] border-steward-gold/5 transform transition-transform group-hover:rotate-0 odd:rotate-[-0.5deg] even:rotate-[0.5deg]">
                 {/* Pins */}
-                <div className="absolute top-4 left-4">
-                  <div className="w-4 h-4 bg-red-600 rounded-full shadow-md border-b-4 border-red-800" />
+                <div className="absolute top-6 left-6">
+                  <div className="w-5 h-5 bg-red-600 rounded-full shadow-md border-b-4 border-red-800" />
                 </div>
-                <div className="absolute top-4 right-4">
-                  <div className="w-4 h-4 bg-red-600 rounded-full shadow-md border-b-4 border-red-800" />
+                <div className="absolute top-6 right-6">
+                  <div className="w-5 h-5 bg-red-600 rounded-full shadow-md border-b-4 border-red-800" />
                 </div>
 
-                <div className="space-y-10">
-                  <div className="flex items-center gap-4 border-b-2 border-steward-gold/20 pb-6">
-                    {section.icon}
-                    <h2 className="text-3xl font-black text-steward-green uppercase tracking-tight">
+                <div className="space-y-12">
+                  <div className="flex items-center gap-6 border-b-2 border-steward-gold/10 pb-8">
+                    <div className="p-3 bg-steward-offwhite rounded-2xl shadow-inner">
+                      {section.icon}
+                    </div>
+                    <h2 className="text-4xl font-black text-steward-green uppercase tracking-tight">
                       {section.title}
                     </h2>
                   </div>
 
-                  <div className="space-y-8">
+                  <div className="space-y-10">
                     {section.items.map((item, iIdx) => (
-                      <div key={iIdx} className="space-y-3 relative pl-6">
-                        <div className="absolute left-0 top-1.5 w-2 h-2 bg-steward-orange rounded-full" />
-                        <h3 className="text-lg font-black text-steward-dark leading-tight uppercase tracking-tight">
+                      <div key={iIdx} className="space-y-4 relative pl-8">
+                        <div className="absolute left-0 top-2 w-3 h-3 bg-steward-orange rounded-full shadow-sm" />
+                        <h3 className="text-2xl font-black text-steward-dark leading-tight uppercase tracking-tight">
                           {item.title}
                         </h3>
-                        <p className="text-steward-dark/70 text-sm leading-relaxed font-medium">
+                        <p className="text-steward-dark/80 text-lg leading-relaxed font-medium">
                           {item.content}
                         </p>
                       </div>
