@@ -68,12 +68,12 @@ export default function OnboardingQuestions() {
           >
             {t('onboarding.skip')}
           </button>
-          <button 
+        <button 
             onClick={() => alert('Progress saved!')}
             className="bg-steward-green hover:bg-steward-orange text-white px-4 py-1.5 rounded-md text-sm font-bold shadow-sm transition-all active:scale-95"
-          >
+        >
             {t('onboarding.save')}
-          </button>
+        </button>
         </div>
       </header>
 
@@ -104,8 +104,8 @@ export default function OnboardingQuestions() {
                   </div>
                   <span className={`text-[10px] font-black uppercase tracking-widest ${q.required ? 'text-steward-orange' : 'text-steward-gold/50'}`}>
                     {q.required ? t('onboarding.required') : t('onboarding.optional')}
-                  </span>
-                </div>
+              </span>
+          </div>
 
                 <div className="grid grid-cols-1 gap-3">
                   {options.map((option, idx) => {
@@ -114,28 +114,28 @@ export default function OnboardingQuestions() {
                       : currentAnswer === option;
 
                     return (
-                      <button
+                <button 
                         key={idx}
                         onClick={() => q.type === 'single' ? handleSingleSelect(q.id, option) : handleMultiSelect(q.id, option)}
                         className={`group flex items-center p-4 border-2 rounded-xl transition-all text-left ${
                           isSelected 
                           ? 'border-steward-blue bg-steward-cream text-steward-blue shadow-md' 
                           : 'border-steward-gold/10 bg-white text-steward-dark/70 hover:border-steward-gold'
-                        }`}
-                      >
+                  }`}
+                >
                         <div className={`w-5 h-5 rounded-md border-2 mr-4 flex items-center justify-center transition-colors ${
                           isSelected ? 'bg-steward-blue border-steward-blue' : 'border-steward-gold/20'
-                        }`}>
+                  }`}>
                           {isSelected && <Check size={14} className="text-white" />}
-                        </div>
+                  </div>
                         <span className={`text-sm font-medium ${isSelected ? 'font-bold' : ''}`}>
                           {option}
                         </span>
-                      </button>
+                </button>
                     );
                   })}
-                </div>
-              </div>
+            </div>
+          </div>
             );
           })}
         </div>

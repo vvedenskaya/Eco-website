@@ -81,7 +81,7 @@ export default function BulletinPage() {
                 <div className="space-y-12">
                   <div className="flex items-center gap-6 border-b-2 border-steward-gold/10 pb-8">
                     <div className="p-3 bg-steward-offwhite rounded-2xl shadow-inner">
-                      {section.icon}
+                    {section.icon}
                     </div>
                     <h2 className="text-4xl font-black text-steward-green uppercase tracking-tight">
                       {section.title}

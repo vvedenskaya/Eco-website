@@ -42,13 +42,13 @@ export default function HubPage() {
   }, []);
 
   const topics = [
-    { id: 'env-literacy', title: 'Environmental Literacy', icon: <Palmtree size={32} />, path: '/hub/environmental-literacy', color: 'bg-[#EBC05D]' },
-    { id: 'workforce-pathways', title: 'Workforce Pathways', icon: <Map size={32} />, path: '/hub/workforce-pathways', color: 'bg-[#EBC05D]' },
-    { id: 'ai-lab', title: 'AI Lab', icon: <Beaker size={32} />, path: '/hub/ai-lab', color: 'bg-[#EBC05D]' },
-    { id: 'listening-sessions', title: 'Listening Sessions', icon: <Users size={32} />, path: '/hub/community-listening', color: 'bg-[#EBC05D]' },
-    { id: 'pilot-workshops', title: 'Pilot Workshops', icon: <Hammer size={32} />, path: '/hub/pilot-workshops', color: 'bg-[#EBC05D]' },
-    { id: 'my-profile', title: 'My Profile', icon: <Star size={32} />, path: '/hub/my-profile', color: 'bg-[#EBC05D]' },
-    { id: 'help-desk', title: 'Help Desk & FAQ', icon: <HelpingHand size={32} />, path: '/hub/help-desk', color: 'bg-[#EBC05D]' },
+    { id: 'my-profile', title: 'My Profile', icon: <Star size={32} />, path: '/hub/my-profile', pos: 'top-[5%] left-1/2 -translate-x-1/2' },
+    { id: 'workforce-pathways', title: 'Workforce Pathways', icon: <Map size={32} />, path: '/hub/workforce-pathways', pos: 'top-[22%] left-[20%]' },
+    { id: 'help-desk', title: 'Help Desk', icon: <HelpingHand size={32} />, path: '/onboarding/bulletin', pos: 'top-[22%] right-[20%]' },
+    { id: 'ai-lab', title: 'AI Lab', icon: <Beaker size={32} />, path: '/hub/ai-lab', pos: 'top-[42%] left-1/2 -translate-x-1/2' },
+    { id: 'env-literacy', title: 'Environmental Literacy', icon: <Palmtree size={32} />, path: '/hub/environmental-literacy', pos: 'bottom-[25%] left-[15%]' },
+    { id: 'pilot-workshops', title: 'Pilot Workshops', icon: <Hammer size={32} />, path: '/hub/pilot-workshops', pos: 'bottom-[25%] right-[15%]' },
+    { id: 'listening-sessions', title: 'Community Listening Sessions', icon: <Users size={32} />, path: '/hub/community-listening', pos: 'bottom-[5%] left-1/2 -translate-x-1/2' },
   ];
 
   return (
@@ -102,11 +102,7 @@ export default function HubPage() {
           ))}
         </div>
 
-        {/* Window Dividers */}
-        <div className="absolute inset-0 border-r-8 border-[#8B7355]/40 left-1/2 -translate-x-1/2" />
-        <div className="absolute inset-0 border-b-8 border-[#8B7355]/40 top-1/2 -translate-y-1/2" />
-        <div className="absolute inset-0 border-r-4 border-[#8B7355]/20 left-1/4" />
-        <div className="absolute inset-0 border-r-4 border-[#8B7355]/20 left-3/4" />
+        {/* Window Dividers removed as per user request */}
         
         {/* Glass Reflection Fade */}
         <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none" />
@@ -119,7 +115,7 @@ export default function HubPage() {
       </div>
 
       {/* 3. LAPTOP CENTER (Sitting ON the desk, z-index: 3) */}
-      <div className="laptop-outer-shell max-w-[1200px] w-full relative z-[3] transition-all duration-500 mb-[-120px] md:mb-[-150px] translate-y-[80px] md:translate-y-[100px] drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]">
+      <div className="laptop-outer-shell max-w-[900px] w-full absolute bottom-[-100px] md:bottom-[-120px] left-0 right-0 mx-auto z-[3] transition-all duration-500 drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)] scale-[0.85] md:scale-100 origin-bottom">
         {/* Upper Part: Screen */}
         <div className="laptop-bezel relative aspect-[16/9] flex flex-col rounded-t-3xl border-[10px] md:border-[20px] shadow-2xl overflow-hidden" style={{ borderColor: '#FFFFFF', backgroundColor: '#FFFFFF' }}>
           <div className="absolute top-2 md:top-4 left-1/2 -translate-x-1/2 text-[10px] font-bold text-steward-dark opacity-30 uppercase tracking-[0.5em] z-30">
@@ -157,23 +153,25 @@ export default function HubPage() {
                 </div>
               </div>
 
-              {/* Desktop Area with Icons */}
-              <div className="flex-1 p-4 md:p-8 overflow-y-auto">
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-12 md:gap-y-16 items-start justify-items-center max-w-6xl mx-auto">
-                  {topics.map((topic) => (
-                    <Link key={topic.id} href={topic.path} className="group flex flex-col items-center gap-3 w-28 md:w-40 text-center">
-                      <div className={`${topic.color} w-14 h-14 md:w-24 md:h-24 rounded-2xl flex items-center justify-center text-steward-dark shadow-[0_8px_0_#D1AA4E,0_15px_20px_rgba(0,0,0,0.15)] transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-2 group-active:translate-y-1 group-active:shadow-none border-2 border-white/50 relative overflow-hidden`}>
-                        <div className="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent pointer-events-none" />
-                        <div className="relative z-10 scale-90 md:scale-[1.4]">
-                          {topic.icon}
-                        </div>
+              {/* Desktop Area with Icons in a Circle Arrangement */}
+              <div className="flex-1 relative p-4 md:p-8">
+                {topics.map((topic) => (
+                  <Link 
+                    key={topic.id} 
+                    href={topic.path} 
+                    className={`absolute ${topic.pos} group flex flex-col items-center gap-2 w-32 md:w-40 text-center z-20 transition-all duration-300 hover:-translate-y-1`}
+                  >
+                    <div className="bg-[#FFD700] w-14 h-14 md:w-20 md:h-20 rounded-xl flex items-center justify-center text-steward-dark shadow-[0_8px_0_#D1AA4E,0_15px_20px_rgba(0,0,0,0.2)] transition-all duration-300 group-hover:scale-110 group-active:translate-y-1 group-active:shadow-none border-2 border-white/20 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent pointer-events-none" />
+                      <div className="relative z-10 scale-90 md:scale-110">
+                        {topic.icon}
                       </div>
-                      <span className="text-[9px] md:text-[11px] font-black text-steward-dark uppercase tracking-wider leading-tight group-hover:text-steward-dark transition-colors drop-shadow-sm">
-                        {topic.title}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
+                    </div>
+                    <span className="text-[9px] md:text-[11px] font-black text-steward-dark uppercase tracking-tight leading-tight drop-shadow-sm bg-white/90 px-2 py-0.5 rounded-md border border-gray-100 shadow-sm">
+                      {topic.title}
+                    </span>
+                  </Link>
+                ))}
               </div>
 
               {/* Bottom Taskbar */}
@@ -212,19 +210,29 @@ export default function HubPage() {
       </div>
 
       {/* 4. FRONT DECORATIONS (z-index: 4) */}
-      {/* LEFT SIDE: Floor Lamp & Vertical Books */}
-      <div className="absolute bottom-0 left-10 md:left-24 z-[4] flex items-end pointer-events-none">
-        {/* Standing Floor Lamp */}
-        <div className="flex flex-col items-center mr-16 translate-y-[-50px]">
-          <div className="w-40 h-24 bg-[#FFD700] rounded-t-full shadow-[0_-10px_20px_rgba(255,215,0,0.3)] relative border-b-[12px] border-yellow-600">
-            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-8 h-12 bg-white/20 blur-xl rounded-full" />
+      {/* LEFT SIDE: Art Deco Lamp */}
+      <div className="absolute bottom-[250px] left-[5%] md:left-[10%] z-[4] flex items-end pointer-events-none">
+        {/* Art Deco Table Lamp - Scaled up */}
+        <div className="relative flex flex-col items-center">
+          {/* Arched Dome */}
+          <div className="w-48 h-32 bg-gradient-to-b from-pink-300/60 via-amber-200/50 to-amber-400/30 rounded-t-full shadow-[inset_0_10px_30px_rgba(255,255,255,0.6),0_0_60px_rgba(251,191,36,0.3)] border-b-4 border-amber-600/20 relative overflow-hidden flex items-center justify-center">
+            {/* Inner Light Glow */}
+            <div className="w-24 h-24 bg-white/40 blur-3xl rounded-full" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/30" />
           </div>
-          <div className="w-3 h-[600px] bg-[#2D3748] shadow-lg border-x border-white/10" />
-          <div className="w-32 h-6 bg-[#2D3748] rounded-t-full shadow-xl" />
+          {/* Metallic Stem - Much taller */}
+          <div className="w-3.5 h-[500px] bg-gradient-to-r from-amber-800 via-amber-500 to-amber-900 shadow-lg" />
+          {/* Brass Base */}
+          <div className="w-32 h-8 bg-gradient-to-r from-amber-950 via-amber-600 to-amber-950 rounded-t-2xl shadow-2xl relative">
+            <div className="absolute inset-x-0 top-0 h-[1.5px] bg-white/30" />
+          </div>
         </div>
+      </div>
 
-        {/* Vertical Books */}
-        <div className="flex items-end gap-1 mb-[250px] ml-[-40px]">
+      {/* RIGHT SIDE: Books & Potted Cacti */}
+      <div className="absolute bottom-[250px] right-[2%] md:right-[5%] z-[4] flex items-end gap-8 pointer-events-none">
+        {/* Vertical Books - Now closer to the laptop */}
+        <div className="flex items-end gap-1 mb-[-10px]">
           <div className="w-10 h-48 bg-steward-green border-x-4 border-steward-dark/20 rounded-sm shadow-md flex flex-col items-center pt-4">
             <div className="w-full h-[1px] bg-white/20 my-1" />
             <div className="w-full h-[1px] bg-white/20 my-1" />
@@ -234,36 +242,56 @@ export default function HubPage() {
           <div className="w-11 h-52 bg-steward-orange border-x-4 border-steward-dark/20 rounded-sm shadow-md" />
           <div className="w-9 h-44 bg-[#8B4513] border-x-4 border-steward-dark/20 rounded-sm shadow-md" />
         </div>
-      </div>
 
-      {/* RIGHT SIDE: Potted Plants */}
-      <div className="absolute bottom-[250px] right-10 md:right-40 z-[4] flex items-end gap-16 pointer-events-none">
-        {/* Tall Plant (Palm) */}
-        <div className="flex flex-col items-center">
-          <div className="relative mb-[-10px]">
-            <div className="absolute -top-[200px] left-1/2 -translate-x-1/2 flex flex-col items-center">
-              <div className="w-2 h-[200px] bg-[#4A7023]" />
-              <div className="absolute top-0 w-32 h-44 bg-[#556B2F] rounded-full rotate-45 origin-bottom shadow-lg" />
-              <div className="absolute top-8 w-32 h-44 bg-[#6B8E23] rounded-full -rotate-45 origin-bottom shadow-lg" />
-              <div className="absolute top-16 w-28 h-40 bg-[#556B2F] rounded-full rotate-12 origin-bottom shadow-lg" />
-              <div className="absolute top-24 w-28 h-40 bg-[#6B8E23] rounded-full -rotate-12 origin-bottom shadow-lg" />
+        {/* Potted Cacti - Now behind the books (further from the laptop) */}
+        <div className="flex items-end gap-6 mb-[-10px]">
+          {/* Cactus 1 (Tall) */}
+          <div className="flex flex-col items-center">
+            <div className="relative w-20 h-[300px] flex items-center justify-center">
+              <div className="w-16 h-[280px] bg-[#6B8E23] rounded-full border-2 border-black/10 shadow-[inset_-6px_-6px_15px_rgba(0,0,0,0.2)] relative overflow-hidden">
+                {/* Needles */}
+                {[...Array(20)].map((_, i) => (
+                  <div 
+                    key={i} 
+                    className="absolute w-0.5 h-2 bg-white/40 rounded-full"
+                    style={{ 
+                      top: `${Math.random() * 80 + 10}%`, 
+                      left: `${Math.random() * 80 + 10}%`,
+                      transform: `rotate(${Math.random() * 360}deg)`
+                    }} 
+                  />
+                ))}
+              </div>
+            </div>
+            {/* Terracotta Pot */}
+            <div className="w-24 h-16 bg-[#A0522D] rounded-b-3xl border-t-[15px] border-[#8B4513] shadow-xl relative overflow-hidden">
+               <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(90deg, transparent, rgba(0,0,0,0.2) 50%, transparent)' }} />
             </div>
           </div>
-          <div className="w-32 h-32 bg-[#A0522D] rounded-b-2xl border-t-[12px] border-[#8B4513] shadow-2xl relative">
-            <div className="absolute inset-0 bg-black/10 opacity-30" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(0,0,0,0.1) 7px)' }} />
-          </div>
-        </div>
 
-        {/* Short Plant (Succulent) */}
-        <div className="flex flex-col items-center">
-          <div className="relative mb-[-5px]">
-            <div className="absolute -top-24 left-1/2 -translate-x-1/2 flex gap-1.5 items-end">
-              <div className="w-8 h-24 bg-[#228B22] rounded-full border-2 border-[#1B6D1B] shadow-lg" />
-              <div className="w-6 h-16 bg-[#228B22] rounded-full border-2 border-[#1B6D1B] shadow-lg" />
-              <div className="w-10 h-20 bg-[#228B22] rounded-full border-2 border-[#1B6D1B] shadow-lg" />
+          {/* Cactus 2 (Short) */}
+          <div className="flex flex-col items-center">
+            <div className="relative w-16 h-56 flex items-center justify-center">
+              <div className="w-14 h-48 bg-[#8FBC8F] rounded-full border-2 border-black/10 shadow-[inset_-5px_-5px_12px_rgba(0,0,0,0.2)] relative overflow-hidden">
+                {/* Needles */}
+                {[...Array(12)].map((_, i) => (
+                  <div 
+                    key={i} 
+                    className="absolute w-0.5 h-1.5 bg-white/30 rounded-full"
+                    style={{ 
+                      top: `${Math.random() * 80 + 10}%`, 
+                      left: `${Math.random() * 80 + 10}%`,
+                      transform: `rotate(${Math.random() * 360}deg)`
+                    }} 
+                  />
+                ))}
+              </div>
+            </div>
+            {/* Terracotta Pot */}
+            <div className="w-20 h-14 bg-[#A0522D] rounded-b-2xl border-t-8 border-[#8B4513] shadow-lg relative">
+              <div className="absolute inset-0 opacity-10 bg-black/20" />
             </div>
           </div>
-          <div className="w-20 h-20 bg-[#A0522D] rounded-b-xl border-t-8 border-[#8B4513] shadow-xl" />
         </div>
       </div>
     </div>
