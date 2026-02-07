@@ -53,59 +53,41 @@ export default function HubPage() {
 
   return (
     <div className="laptop-frame-wrapper min-h-screen flex flex-col items-center justify-center overflow-hidden font-exo relative bg-[#F5F5F5]">
-      {/* 1. LARGE PANORAMIC WINDOW (z-index: 1) */}
-      <div className="absolute top-[2%] left-1/2 -translate-x-1/2 w-[1200px] h-[650px] border-[15px] border-[#8B7355] shadow-[0_0_100px_rgba(0,0,0,0.3)] z-1 rounded-sm overflow-hidden flex flex-col">
-        {/* Sky Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#87CEEB] via-[#BEE3F8] to-[#FFE5B4]" />
-        
-        {/* White Fluffy Clouds */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Cloud 1 */}
-          <div className="absolute top-12 left-[15%] w-32 h-12 bg-white/80 rounded-full blur-md opacity-60" />
-          <div className="absolute top-8 left-[18%] w-16 h-16 bg-white/80 rounded-full blur-md opacity-60" />
+      {/* 1. WALL ART: VINTAGE POSTERS (z-index: 1) */}
+      {/* Left Poster: Topographic/Geological Map */}
+      <div className="absolute top-[5%] left-[5%] w-[350px] h-[480px] border-[12px] border-[#3D2B1F] bg-[#F4ECD8] shadow-2xl z-1 flex flex-col overflow-hidden group">
+        <div className="flex-1 relative p-6 border border-[#D2B48C]/30 m-2">
+          {/* Mock Map Lines */}
+          <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #8B4513 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+          <div className="w-full h-full border border-[#8B4513]/20 rounded-full scale-[1.5] -translate-x-1/2 -translate-y-1/2 absolute top-0 left-0" />
+          <div className="w-full h-full border border-[#8B4513]/20 rounded-full scale-[1.2] -translate-x-1/2 -translate-y-1/2 absolute top-0 left-0" />
+          <div className="w-full h-full border border-[#8B4513]/20 rounded-full scale-[0.9] -translate-x-1/2 -translate-y-1/2 absolute top-0 left-0" />
           
-          {/* Cloud 2 */}
-          <div className="absolute top-24 left-[45%] w-40 h-14 bg-white/90 rounded-full blur-lg opacity-40" />
-          
-          {/* Cloud 3 */}
-          <div className="absolute top-16 left-[75%] w-28 h-10 bg-white/80 rounded-full blur-md opacity-50" />
-          <div className="absolute top-14 left-[78%] w-12 h-12 bg-white/80 rounded-full blur-md opacity-50" />
-          
-          {/* Cloud 4 */}
-          <div className="absolute top-40 left-[10%] w-48 h-16 bg-white/70 rounded-full blur-xl opacity-30" />
+          <div className="absolute bottom-6 left-6 right-6">
+            <div className="h-[1px] bg-[#8B4513]/40 w-full mb-2" />
+            <div className="text-[10px] font-bold text-[#8B4513]/60 uppercase tracking-widest text-center">Geological Survey · Plate IV</div>
+          </div>
         </div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent pointer-events-none" />
+      </div>
 
-        {/* Panoramic City Skyline Silhouettes with Windows */}
-        <div className="absolute bottom-0 w-full h-full flex items-end justify-around gap-2 px-6">
-          {[
-            { h: 'h-[320px]', w: 'w-20', delay: '0s', windows: 12 },
-            { h: 'h-[450px]', w: 'w-24', delay: '0.1s', windows: 20 },
-            { h: 'h-[280px]', w: 'w-16', delay: '0.2s', windows: 8 },
-            { h: 'h-[520px]', w: 'w-28', delay: '0.3s', windows: 25 },
-            { h: 'h-[380px]', w: 'w-22', delay: '0.4s', windows: 15 },
-            { h: 'h-[480px]', w: 'w-24', delay: '0.5s', windows: 22 },
-            { h: 'h-[300px]', w: 'w-18', delay: '0.6s', windows: 10 },
-            { h: 'h-[420px]', w: 'w-20', delay: '0.7s', windows: 18 },
-            { h: 'h-[250px]', w: 'w-14', delay: '0.8s', windows: 6 },
-          ].map((b, i) => (
-            <div key={i} className={`${b.h} ${b.w} bg-[#1A202C] rounded-t-md relative shadow-2xl flex-shrink-0`}>
-              {/* Building Top Detail */}
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#1A202C] rounded-t-full" />
-              
-              {/* Windows (Lights) */}
-              <div className="grid grid-cols-2 gap-2 p-3 opacity-30 group-hover:opacity-50 transition-opacity">
-                {[...Array(b.windows)].map((_, winIdx) => (
-                  <div key={winIdx} className="w-1.5 h-1.5 bg-yellow-100 rounded-sm shadow-[0_0_2px_rgba(255,255,255,0.5)]" />
-                ))}
-              </div>
-            </div>
-          ))}
+      {/* Right Poster: Botanical/Scientific Diagram */}
+      <div className="absolute top-[5%] right-[5%] w-[380px] h-[520px] border-[12px] border-[#3D2B1F] bg-[#EAE3D2] shadow-2xl z-1 flex flex-col overflow-hidden">
+        <div className="flex-1 relative p-8 m-2 border-2 border-[#8B4513]/10">
+          <div className="w-full h-full relative flex items-center justify-center">
+            {/* Mock Scientific Illustration */}
+            <div className="w-1 h-4/5 bg-[#5D3A1A]/40 rounded-full" />
+            <div className="absolute top-1/4 w-40 h-24 border-2 border-[#5D3A1A]/30 rounded-[50%_50%_0_0] -rotate-12" />
+            <div className="absolute top-1/2 w-32 h-20 border-2 border-[#5D3A1A]/30 rounded-[50%_50%_0_0] rotate-6" />
+            <div className="absolute bottom-1/4 w-44 h-32 border-2 border-[#5D3A1A]/30 rounded-[50%_50%_0_0] -rotate-3" />
+          </div>
+          <div className="absolute top-6 right-6 text-[9px] font-serif italic text-[#5D3A1A]/50">Fig. 127</div>
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-3/4">
+            <div className="text-[12px] font-black text-[#5D3A1A]/70 uppercase tracking-[0.3em] text-center leading-none">Botany Analysis</div>
+            <div className="text-[8px] text-[#5D3A1A]/40 uppercase tracking-widest text-center mt-2">Classification of Arid Flora</div>
+          </div>
         </div>
-
-        {/* Window Dividers removed as per user request */}
-        
-        {/* Glass Reflection Fade */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-yellow-900/5 pointer-events-none" />
       </div>
 
       {/* 2. FULL-WIDTH WOODEN DESK (z-index: 2) */}
@@ -220,8 +202,8 @@ export default function HubPage() {
             <div className="w-24 h-24 bg-white/40 blur-3xl rounded-full" />
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/30" />
           </div>
-          {/* Metallic Stem - Much taller */}
-          <div className="w-3.5 h-[500px] bg-gradient-to-r from-amber-800 via-amber-500 to-amber-900 shadow-lg" />
+          {/* Metallic Stem - Shorter */}
+          <div className="w-3.5 h-[350px] bg-gradient-to-r from-amber-800 via-amber-500 to-amber-900 shadow-lg" />
           {/* Brass Base */}
           <div className="w-32 h-8 bg-gradient-to-r from-amber-950 via-amber-600 to-amber-950 rounded-t-2xl shadow-2xl relative">
             <div className="absolute inset-x-0 top-0 h-[1.5px] bg-white/30" />
@@ -230,21 +212,74 @@ export default function HubPage() {
       </div>
 
       {/* RIGHT SIDE: Books & Potted Cacti */}
-      <div className="absolute bottom-[250px] right-[2%] md:right-[5%] z-[4] flex items-end gap-8 pointer-events-none">
-        {/* Vertical Books - Now closer to the laptop */}
-        <div className="flex items-end gap-1 mb-[-10px]">
-          <div className="w-10 h-48 bg-steward-green border-x-4 border-steward-dark/20 rounded-sm shadow-md flex flex-col items-center pt-4">
-            <div className="w-full h-[1px] bg-white/20 my-1" />
-            <div className="w-full h-[1px] bg-white/20 my-1" />
+      <div className="absolute bottom-[250px] right-[0px] md:right-[2%] z-[4] flex items-end gap-1 pointer-events-none">
+        {/* Left Bookend (Floral Brass Wire) */}
+        <div className="relative w-12 h-40 flex items-end justify-center mb-[-10px] mr-1">
+          <div className="w-1 h-32 bg-amber-600 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2" />
+          <div className="w-8 h-8 border-2 border-amber-600 rounded-full absolute top-8 left-1/2 -translate-x-1/2 flex items-center justify-center">
+            <div className="w-4 h-4 bg-amber-600 rounded-full blur-[2px] opacity-40" />
           </div>
-          <div className="w-12 h-56 bg-steward-blue border-x-4 border-steward-dark/20 rounded-sm shadow-md" />
-          <div className="w-8 h-40 bg-steward-gold border-x-4 border-steward-dark/20 rounded-sm shadow-md" />
-          <div className="w-11 h-52 bg-steward-orange border-x-4 border-steward-dark/20 rounded-sm shadow-md" />
-          <div className="w-9 h-44 bg-[#8B4513] border-x-4 border-steward-dark/20 rounded-sm shadow-md" />
+          <div className="w-6 h-6 border-2 border-amber-600 rounded-full absolute top-20 left-0" />
+          <div className="w-6 h-6 border-2 border-amber-600 rounded-full absolute top-20 right-0" />
+          <div className="w-12 h-2 bg-amber-700 rounded-full" />
+        </div>
+
+        {/* Vintage Decorative Books */}
+        <div className="flex items-end mb-[-10px]">
+          {/* Red Book */}
+          <div className="w-12 h-56 bg-[#8B0000] border-x-4 border-black/20 rounded-sm shadow-md flex flex-col items-center pt-6 space-y-4">
+            <div className="w-3/4 h-[1px] bg-amber-500/40" />
+            <div className="w-1/2 h-[1px] bg-amber-500/40" />
+            <div className="flex-1" />
+            <div className="w-3/4 h-[1px] bg-amber-500/40 mb-6" />
+          </div>
+          {/* Beige Book */}
+          <div className="w-10 h-48 bg-[#F5F5DC] border-x-4 border-black/10 rounded-sm shadow-md flex flex-col items-center pt-4 space-y-2">
+            <div className="w-full h-4 border-y border-black/5 flex flex-col gap-0.5 justify-center px-1">
+              <div className="h-[0.5px] bg-black/10 w-full" />
+              <div className="h-[0.5px] bg-black/10 w-full" />
+            </div>
+          </div>
+          {/* Teal Book */}
+          <div className="w-14 h-60 bg-[#008080] border-x-4 border-black/20 rounded-sm shadow-md flex flex-col items-center pt-8">
+            <div className="w-8 h-8 rounded-full border border-white/20 mb-4 flex items-center justify-center">
+              <div className="w-4 h-[1px] bg-white/20 rotate-45" />
+              <div className="w-4 h-[1px] bg-white/20 -rotate-45" />
+            </div>
+            <div className="w-3/4 h-[1px] bg-white/10 mt-auto mb-10" />
+          </div>
+          {/* Orange Book */}
+          <div className="w-9 h-52 bg-[#FF8C00] border-x-4 border-black/20 rounded-sm shadow-md flex flex-col items-center justify-between py-6">
+            <div className="w-full h-[1px] bg-black/10" />
+            <div className="w-full h-[1px] bg-black/10" />
+            <div className="w-full h-[1px] bg-black/10" />
+          </div>
+          {/* Yellow Book */}
+          <div className="w-11 h-44 bg-[#FFD700] border-x-4 border-black/10 rounded-sm shadow-md flex flex-col items-center pt-4">
+            <div className="w-2 h-2 bg-black/5 rounded-full mb-2" />
+            <div className="w-full h-[1px] bg-black/5" />
+          </div>
+          {/* Coral Book */}
+          <div className="w-13 h-56 bg-[#FF7F50] border-x-4 border-black/20 rounded-sm shadow-md flex flex-col items-center py-8 space-y-1">
+            <div className="w-full h-[0.5px] bg-white/20" />
+            <div className="w-full h-[0.5px] bg-white/20" />
+            <div className="w-full h-[0.5px] bg-white/20" />
+          </div>
+        </div>
+
+        {/* Right Bookend (Floral Brass Wire) */}
+        <div className="relative w-12 h-40 flex items-end justify-center mb-[-10px] ml-1">
+          <div className="w-1 h-32 bg-amber-600 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2" />
+          <div className="w-8 h-8 border-2 border-amber-600 rounded-full absolute top-8 left-1/2 -translate-x-1/2 flex items-center justify-center">
+            <div className="w-4 h-4 bg-amber-600 rounded-full blur-[2px] opacity-40" />
+          </div>
+          <div className="w-6 h-6 border-2 border-amber-600 rounded-full absolute top-20 left-0" />
+          <div className="w-6 h-6 border-2 border-amber-600 rounded-full absolute top-20 right-0" />
+          <div className="w-12 h-2 bg-amber-700 rounded-full" />
         </div>
 
         {/* Potted Cacti - Now behind the books (further from the laptop) */}
-        <div className="flex items-end gap-6 mb-[-10px]">
+        <div className="flex items-end gap-6 mb-[-10px] ml-4">
           {/* Cactus 1 (Tall) */}
           <div className="flex flex-col items-center">
             <div className="relative w-20 h-[300px] flex items-center justify-center">
