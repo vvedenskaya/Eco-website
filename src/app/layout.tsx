@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { AdminProvider } from "@/context/AdminContext";
 
 export const metadata: Metadata = {
   title: "Lit Hub | StewardWorks",
@@ -17,7 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen relative font-exo">
         <LanguageProvider>
-          {children}
+          <AdminProvider>
+            {children}
+          </AdminProvider>
         </LanguageProvider>
       </body>
     </html>

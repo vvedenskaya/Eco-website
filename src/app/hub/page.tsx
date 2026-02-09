@@ -18,13 +18,16 @@ import {
   Star,
   HelpingHand,
   Hammer,
-  Wrench
+  Wrench,
+  Settings
 } from 'lucide-react';
 import Image from 'next/image';
+import { useAdmin } from '@/context/AdminContext';
 
 export default function HubPage() {
   const { t } = useLanguage();
   const router = useRouter();
+  const { settings } = useAdmin();
   const [selectedTopic, setSelectedTopic] = useState<string>('getting-started');
   const [statusMessage, setStatusMessage] = useState('Exploring the environmental literacy hub...');
   const [currentTime, setCurrentTime] = useState<string>('');
@@ -52,42 +55,81 @@ export default function HubPage() {
   ];
 
   return (
-    <div className="laptop-frame-wrapper min-h-screen flex flex-col items-center justify-center overflow-hidden font-exo relative bg-[#F5F5F5]">
+    <div 
+      className="laptop-frame-wrapper min-h-screen flex flex-col items-center justify-center overflow-hidden font-exo relative transition-all duration-1000"
+      style={{ 
+        backgroundColor: settings.wallpaperUrl ? 'transparent' : '#A0C4FF',
+        backgroundImage: settings.wallpaperUrl ? `url(${settings.wallpaperUrl})` : 'none',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
+    >
+      {/* Hidden Link to Admin (for clients) - Positioned subtly at the very bottom corner */}
+      <Link href="/admin" className="absolute bottom-2 left-2 z-[100] opacity-0 hover:opacity-100 transition-opacity p-2 text-steward-dark/20 hover:text-steward-dark">
+        <Settings size={16} />
+      </Link>
+
       {/* 1. WALL ART: VINTAGE POSTERS (z-index: 1) */}
       {/* Left Poster: Topographic/Geological Map */}
       <div className="absolute top-[5%] left-[5%] w-[350px] h-[480px] border-[12px] border-[#3D2B1F] bg-[#F4ECD8] shadow-2xl z-1 flex flex-col overflow-hidden group">
-        <div className="flex-1 relative p-6 border border-[#D2B48C]/30 m-2">
-          {/* Mock Map Lines */}
-          <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #8B4513 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
-          <div className="w-full h-full border border-[#8B4513]/20 rounded-full scale-[1.5] -translate-x-1/2 -translate-y-1/2 absolute top-0 left-0" />
-          <div className="w-full h-full border border-[#8B4513]/20 rounded-full scale-[1.2] -translate-x-1/2 -translate-y-1/2 absolute top-0 left-0" />
-          <div className="w-full h-full border border-[#8B4513]/20 rounded-full scale-[0.9] -translate-x-1/2 -translate-y-1/2 absolute top-0 left-0" />
-          
-          <div className="absolute bottom-6 left-6 right-6">
-            <div className="h-[1px] bg-[#8B4513]/40 w-full mb-2" />
-            <div className="text-[10px] font-bold text-[#8B4513]/60 uppercase tracking-widest text-center">Geological Survey · Plate IV</div>
+        {settings.leftPosterUrl ? (
+          <div className="relative w-full h-full">
+            <Image src={settings.leftPosterUrl} alt="Custom Left Poster" fill className="object-cover" />
           </div>
-        </div>
+        ) : (
+          <div className="flex-1 relative p-6 border border-[#D2B48C]/30 m-2">
+            {/* Mock Map Lines */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #8B4513 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+            <div className="w-full h-full border border-[#8B4513]/20 rounded-full scale-[1.5] -translate-x-1/2 -translate-y-1/2 absolute top-0 left-0" />
+            <div className="w-full h-full border border-[#8B4513]/20 rounded-full scale-[1.2] -translate-x-1/2 -translate-y-1/2 absolute top-0 left-0" />
+            <div className="w-full h-full border border-[#8B4513]/20 rounded-full scale-[0.9] -translate-x-1/2 -translate-y-1/2 absolute top-0 left-0" />
+            
+            <div className="absolute bottom-6 left-6 right-6">
+              <div className="h-[1px] bg-[#8B4513]/40 w-full mb-2" />
+              <div className="text-[10px] font-bold text-[#8B4513]/60 uppercase tracking-widest text-center">Geological Survey · Plate IV</div>
+            </div>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent pointer-events-none" />
       </div>
 
       {/* Right Poster: Botanical/Scientific Diagram */}
-      <div className="absolute top-[5%] right-[5%] w-[380px] h-[520px] border-[12px] border-[#3D2B1F] bg-[#EAE3D2] shadow-2xl z-1 flex flex-col overflow-hidden">
-        <div className="flex-1 relative p-8 m-2 border-2 border-[#8B4513]/10">
-          <div className="w-full h-full relative flex items-center justify-center">
-            {/* Mock Scientific Illustration */}
-            <div className="w-1 h-4/5 bg-[#5D3A1A]/40 rounded-full" />
-            <div className="absolute top-1/4 w-40 h-24 border-2 border-[#5D3A1A]/30 rounded-[50%_50%_0_0] -rotate-12" />
-            <div className="absolute top-1/2 w-32 h-20 border-2 border-[#5D3A1A]/30 rounded-[50%_50%_0_0] rotate-6" />
-            <div className="absolute bottom-1/4 w-44 h-32 border-2 border-[#5D3A1A]/30 rounded-[50%_50%_0_0] -rotate-3" />
+      <div className="absolute top-[5%] right-[5%] w-[380px] h-[520px] border-[12px] border-[#3D2B1F] bg-[#2D1B0D] shadow-2xl z-1 flex flex-col overflow-hidden group">
+        {settings.rightPosterUrl ? (
+          <div className="relative w-full h-full">
+            <Image src={settings.rightPosterUrl} alt="Custom Right Poster" fill className="object-cover" />
           </div>
-          <div className="absolute top-6 right-6 text-[9px] font-serif italic text-[#5D3A1A]/50">Fig. 127</div>
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-3/4">
-            <div className="text-[12px] font-black text-[#5D3A1A]/70 uppercase tracking-[0.3em] text-center leading-none">Botany Analysis</div>
-            <div className="text-[8px] text-[#5D3A1A]/40 uppercase tracking-widest text-center mt-2">Classification of Arid Flora</div>
+        ) : (
+          <div className="flex-1 relative overflow-hidden flex flex-col items-center justify-center text-center p-4">
+            {/* Sunset/Mountain Background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#FF7F50] via-[#D2691E] to-[#2D1B0D] opacity-80" />
+            
+            {/* Mountain Silhouette */}
+            <div className="absolute bottom-0 w-full h-1/2 bg-[#1A0F07] clip-path-mountain" style={{ clipPath: 'polygon(0% 100%, 20% 60%, 40% 85%, 60% 40%, 80% 75%, 100% 100%)' }} />
+
+            {/* Abstract Center Shape (Map/Silhouette) */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none">
+              <div className="w-48 h-64 bg-black/40 blur-xl rounded-[40%_60%_70%_30%/40%_50%_60%_50%]" />
+            </div>
+
+            {/* Neon Sign Content */}
+            <div className="relative z-10 flex flex-col items-center gap-1">
+              <div className="border-4 border-[#00FFFF]/40 px-4 py-2 rounded-lg shadow-[0_0_20px_rgba(0,255,255,0.3),inset_0_0_20px_rgba(0,255,255,0.2)] bg-black/20 backdrop-blur-sm">
+                <div className="text-[28px] font-black text-[#00FFFF] tracking-[0.2em] uppercase drop-shadow-[0_0_8px_rgba(0,255,255,0.8)] leading-none mb-1">Exit</div>
+                <div className="text-[20px] font-black text-[#FFD700] tracking-[0.1em] uppercase drop-shadow-[0_0_8px_rgba(255,215,0,0.8)] leading-none">Steward.Works</div>
+              </div>
+              
+              <div className="mt-6 flex flex-col items-center gap-1">
+                <div className="text-[8px] font-bold text-white/60 tracking-[0.4em] uppercase">A Film By Curtis Brown</div>
+                <div className="text-[10px] font-black text-white/80 tracking-[0.2em] uppercase">Coming Soon</div>
+              </div>
+            </div>
+            
+            {/* Reflection/Glow Effect */}
+            <div className="absolute top-1/2 left-0 w-full h-1/2 bg-gradient-to-t from-white/5 to-transparent pointer-events-none" />
           </div>
-        </div>
-        <div className="absolute inset-0 bg-yellow-900/5 pointer-events-none" />
+        )}
+        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
       </div>
 
       {/* 2. FULL-WIDTH WOODEN DESK (z-index: 2) */}
