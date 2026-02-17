@@ -92,7 +92,6 @@ export default function HubPage() {
         )}
         <div className="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent pointer-events-none" />
       </div>
-
       {/* Right Poster: Botanical/Scientific Diagram */}
       <div className="absolute top-[5%] right-[5%] w-[380px] h-[520px] border-[12px] border-[#3D2B1F] bg-[#2D1B0D] shadow-2xl z-1 flex flex-col overflow-hidden group">
         {settings.rightPosterUrl ? (
@@ -139,7 +138,7 @@ export default function HubPage() {
       </div>
 
       {/* 3. LAPTOP CENTER (Sitting ON the desk, z-index: 3) */}
-      <div className="laptop-outer-shell max-w-[900px] w-full absolute bottom-[-100px] md:bottom-[-120px] left-0 right-0 mx-auto z-[3] transition-all duration-500 drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)] scale-[0.85] md:scale-100 origin-bottom">
+      <div className="laptop-outer-shell max-w-[900px] w-full absolute bottom-[-58px] md:bottom-[-70px] left-0 right-0 mx-auto z-[3] transition-all duration-500 drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)] scale-[0.72] md:scale-[0.72] origin-bottom">
         {/* Upper Part: Screen */}
         <div className="laptop-bezel relative aspect-[16/9] flex flex-col rounded-t-3xl border-[10px] md:border-[20px] shadow-2xl overflow-hidden" style={{ borderColor: '#FFFFFF', backgroundColor: '#FFFFFF' }}>
           <div className="absolute top-2 md:top-4 left-1/2 -translate-x-1/2 text-[10px] font-bold text-steward-dark opacity-30 uppercase tracking-[0.5em] z-30">
